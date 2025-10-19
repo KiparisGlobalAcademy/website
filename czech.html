@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обучение в Чехии - Kiparis Global Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Цветовая палитра */
+        :root {
+            --dark-green: #1E4232;    /* Глубокий кипарисовый зелёный */
+            --light-green: #3F6E4C;   /* Мягкий природный зелёный */
+            --dark-blue: #0C1B2C;     /* Тёмно-синий / почти чёрный */
+            --white: #FFFFFF;         /* Белый */
+            --gold: #B69B64;          /* Золотисто-бежевый */
+            --light-bg: #F8F9FA;      /* Светлый фон для секций */
+        }
+        
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark-blue);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--dark-green);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--light-green);
+            color: var(--white);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(30, 66, 50, 0.2);
+        }
+        
+        .btn-gold {
+            background: var(--gold);
+            color: var(--dark-blue);
+        }
+        
+        .btn-gold:hover {
+            background: #a08654;
+            color: var(--white);
+        }
+        
+        section {
+            padding: 50px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            margin: 15px auto;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--dark-blue);
+            font-size: 1.1rem;
+        }
+        
+         /* Шапка */
+        header {
+            background: var(--dark-blue);
+            box-shadow: 0 2px 15px rgba(12, 27, 44, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .logo span {
+            color: var(--gold);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 10px 0;
+            display: block;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        /* Выпадающее меню для Университетов */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 280px;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(12, 27, 44, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            padding: 20px 0;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu:before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 30px;
+            width: 16px;
+            height: 16px;
+            background: var(--white);
+            transform: rotate(45deg);
+        }
+        
+        .country-items {
+            display: flex;
+            align-items: center;
+            padding: 12px 25px;
+            text-decoration: none;
+            color: var(--dark-blue);
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .country-items:hover {
+            background: var(--light-bg);
+            border-left: 3px solid var(--light-green);
+            padding-left: 30px;
+        }
+        
+        .country-flags {
+            width: 30px;
+            height: 20px;
+            border-radius: 2px;
+            margin-right: 15px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .country-name {
+            font-weight: 500;
+            color: var(--dark-blue);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--white);
+        }
+    
+        /* Герой секция Чехия */
+        .czech-hero {
+            background: linear-gradient(rgba(30, 66, 50, 0.8), rgba(12, 27, 44, 0.7)), url('https://images.unsplash.com/photo-1519677100203-a0e668c92439?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .czech-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .czech-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-weight: 300;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+        }
+        
+        .free-education-badge {
+            background: var(--gold);
+            color: var(--dark-blue);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(182, 155, 100, 0.3);
+        }
+        
+        /* Университеты Чехии */
+        .universities {
+            background: var(--white);
+        }
+        
+        .universities-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tab-btn {
+            background: var(--white);
+            border: 2px solid var(--light-green);
+            color: var(--light-green);
+            padding: 10px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--light-green);
+            color: var(--white);
+        }
+        
+        .universities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .university-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(12, 27, 44, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .university-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(12, 27, 44, 0.15);
+        }
+        
+        .university-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .university-rank {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gold);
+            color: var(--dark-blue);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .free-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--light-green);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .university-info {
+            padding: 25px;
+        }
+        
+        .university-info h3 {
+            margin-bottom: 10px;
+            color: var(--dark-green);
+        }
+        
+        .university-info p {
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+            font-size: 0.95rem;
+        }
+        
+        .university-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--dark-blue);
+        }
+        
+        /* Культура Чехии */
+        .culture {
+            background: var(--light-bg);
+        }
+        
+        .culture-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .culture-text {
+            flex: 1;
+        }
+        
+        .culture-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .culture-text p {
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+        }
+        
+        .culture-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .culture-feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .culture-icon {
+            font-size: 1.5rem;
+            color: var(--light-green);
+        }
+        
+        .culture-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(30, 66, 50, 0.1);
+            position: relative;
+        }
+        
+        .culture-image:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            z-index: -1;
+        }
+        
+        .culture-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    
+        /* Процесс поступления */
+        .admission-process {
+            background: var(--white);
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 50px;
+        }
+        
+        .process-steps:before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--light-green);
+            z-index: 1;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--light-green);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            border: 5px solid var(--white);
+        }
+        
+        .step-content h3 {
+            margin-bottom: 10px;
+            color: var(--dark-green);
+        }
+        
+        .step-content p {
+            color: var(--dark-blue);
+            font-size: 0.95rem;
+        }
+        
+        /* Другие страны */
+        .other-countries {
+            background: var(--light-bg);
+        }
+        
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .country-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(12, 27, 44, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .country-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(12, 27, 44, 0.15);
+        }
+        
+        .country-flag {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .country-info {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .country-info h3 {
+            margin-bottom: 10px;
+            color: var(--dark-green);
+        }
+        
+        .country-info p {
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+        }
+        
+        /* CTA секция */
+        .cta-section {
+            background: linear-gradient(rgba(30, 66, 50, 0.9), rgba(12, 27, 44, 0.9)), url('https://images.unsplash.com/photo-1519677100203-a0e668c92439?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Футер */
+        footer {
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 70px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+        
+        .footer-col p {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--gold);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .culture-content, .process-steps {
+                flex-direction: column;
+            }
+            
+            .czech-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .process-steps:before {
+                display: none;
+            }
+            
+            .process-step {
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--dark-blue);
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(12, 27, 44, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Kiparis<span>Global</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li class="dropdown">
+                        <a href="./universities.html">Университеты</a>
+                        <div class="dropdown-menu">
+                            <a href="./south-korea.html" class="country-items">
+                                <div class="country-flags" style="background-color: #0047A0;"></div>
+                                <span class="country-name">Южная Корея</span>
+                            </a>
+                            <a href="./china.html" class="country-items">
+                                <div class="country-flags" style="background-color: #DE2910;"></div>
+                                <span class="country-name">Китай</span>
+                            </a>
+                            <a href="./spain.html" class="country-items">
+                                <div class="country-flags" style="background-color: #C60B1E;"></div>
+                                <span class="country-name">Испания</span>
+                            </a>
+                            <a href="./czech.html" class="country-items">
+                                <div class="country-flags" style="background-color: #D7141A;"></div>
+                                <span class="country-name">Чехия</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="application.html">Анкета</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">☰</div>
+        </div>
+    </header>
+
+
+    <!-- Герой секция Чехия -->
+    <section class="czech-hero">
+        <div class="container">
+            <h1 class="fade-in">Обучение в Чехии</h1>
+            <p class="fade-in">Откройте для себя качественное европейское образование в сердце Европы по доступным ценам и с возможностью бесплатного обучения</p>
+            <a href="./index.html#application" class="btn btn-gold fade-in">Подать заявку</a>
+        </div>
+    </section>
+
+    <!-- Университеты Чехии -->
+    <section class="universities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Лучшие университеты Чехии</h2>
+                <p>Топовые вузы с европейским признанием и многовековыми традициями</p>
+            </div>
+            <div class="universities-tabs">
+                <button class="tab-btn active" data-tab="all">Все</button>
+                <button class="tab-btn" data-tab="prague">Прага</button>
+                <button class="tab-btn" data-tab="brno">Брно</button>
+                <button class="tab-btn" data-tab="free">Бесплатные</button>
+            </div>
+            <div class="universities-grid">
+                <div class="university-card fade-in" data-category="prague free">
+                  <div class="university-image" style="background-color: #e9ecef;">
+  <img src="https://static.tildacdn.com/tild6564-6230-4662-b733-366334636531/---2-1920x1024.jpeg"  class="university-image">
+  <div class="university-rank">Топ-1 в Чехии</div>
+  <div class="free-badge">Бесплатно</div>
+</div>
+
+                    <div class="university-info">
+                        <h3>Карлов университет</h3>
+                        <p>Старейший университет Центральной Европы, основанный в 1348 году. Сильные программы в области медицины, права и гуманитарных наук.</p>
+                        <div class="university-meta">
+                            <span>📍 Прага</span>
+                            <span>💰 Бесплатно*</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="university-card fade-in" data-category="prague">
+                    <div class="university-image" style="background-color: #e9ecef;">
+                          <img src="https://static.tildacdn.com/tild3765-3537-4063-a437-306339343832/__.png"  class="university-image">
+
+                        <div class="university-rank">Топ-2 в Чехии</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Чешский технический университет</h3>
+                        <p>Ведущий технический университет Чехии с сильными программами в области инженерии, архитектуры и информационных технологий.</p>
+                        <div class="university-meta">
+                            <span>📍 Прага</span>
+                            <span>💰 от €3,000/год</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="university-card fade-in" data-category="brno free">
+                    <div class="university-image" style="background-color: #e9ecef;">
+                                                  <img src="https://images.gostudy.cz/images/2014/12/Masarikov.jpg"  class="university-image">
+
+                        <div class="university-rank">Топ-3 в Чехии</div>
+                        <div class="free-badge">Бесплатно</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Университет Масарика</h3>
+                        <p>Второй по величине университет Чехии с современным кампусом и сильными программами в области права, социальных и естественных наук.</p>
+                        <div class="university-meta">
+                            <span>📍 Брно</span>
+                            <span>💰 Бесплатно*</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="university-card fade-in" data-category="prague">
+                    <div class="university-image" style="background-color: #e9ecef;">
+                                                  <img src="https://cdn.globaldialog.ru/_/manager/files/546/a43f4bd000/vse1.jpg"  class="university-image">
+
+                        <div class="university-rank">Топ-4 в Чехии</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Высшая школа экономики</h3>
+                        <p>Ведущий экономический университет Центральной Европы с сильными программами в области бизнеса, экономики и международных отношений.</p>
+                        <div class="university-meta">
+                            <span>📍 Прага</span>
+                            <span>💰 от €3,500/год</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="university-card fade-in" data-category="brno free">
+                    <div class="university-image" style="background-color: #e9ecef;">
+                                                  <img src="https://www.euroeducation.cz/foto/pages/vut.jpg"  class="university-image">
+
+                        <div class="university-rank">Топ-5 в Чехии</div>
+                        <div class="free-badge">Бесплатно</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Технический университет Брно</h3>
+                        <p>Крупный технический университет с сильными программами в области инженерии, информационных технологий и архитектуры.</p>
+                        <div class="university-meta">
+                            <span>📍 Брно</span>
+                            <span>💰 Бесплатно*</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="university-card fade-in" data-category="prague">
+                    <div class="university-image" style="background-color: #e9ecef;">
+                                                  <img src="https://vtgstudy.com/wp-content/uploads/2017/09/Postuplenie-v-Anglo-Amerikanskij-Institut1-600x315.jpg"  class="university-image">
+
+                        <div class="university-rank">Топ-6 в Чехии</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Англо-Американский университет</h3>
+                        <p>Частный университет с программами на английском языке в области бизнеса, международных отношений и гуманитарных наук.</p>
+                        <div class="university-meta">
+                            <span>📍 Прага</span>
+                            <span>💰 от €5,000/год</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px; font-size: 0.9rem; color: var(--dark-blue);">
+                * Бесплатное обучение доступно на чешском языке в государственных вузах
+            </div>
+        </div>
+    </section>
+
+    <!-- Культура Чехии -->
+    <section class="culture">
+        <div class="container">
+            <div class="section-title">
+                <h2>Культура и жизнь в Чехии</h2>
+                <p>Узнайте, каково жить и учиться в этой уютной стране в сердце Европы</p>
+            </div>
+            <div class="culture-content">
+                <div class="culture-text fade-in">
+                    <h2>Жизнь в Чехии: что нужно знать</h2>
+                    <p>Чехия сочетает в себе богатое историческое наследие и современный европейский образ жизни. Студенты, приезжающие сюда, погружаются в уникальную культуру, где готическая архитектура соседствует с современными технологиями.</p>
+                    <p>Чешское пиво, замки, курорты и гостеприимные люди стали визитной карточкой страны. Чехия находится в самом центре Европы, что позволяет легко путешествовать в соседние страны.</p>
+                    
+                    <div class="culture-features">
+                        <div class="culture-feature">
+                            <div class="culture-icon">🍺</div>
+                            <div>
+                                <h4>Чешская кухня</h4>
+                                <p>Кнедлики, вепрево колено, знаменитое пиво</p>
+                            </div>
+                        </div>
+                        <div class="culture-feature">
+                            <div class="culture-icon">🏰</div>
+                            <div>
+                                <h4>Богатая история</h4>
+                                <p>Замки, соборы, исторические центры городов</p>
+                            </div>
+                        </div>
+                        <div class="culture-feature">
+                            <div class="culture-icon">🌍</div>
+                            <div>
+                                <h4>Центр Европы</h4>
+                                <p>Удобное расположение для путешествий</p>
+                            </div>
+                        </div>
+                        <div class="culture-feature">
+                            <div class="culture-icon">💰</div>
+                            <div>
+                                <h4>Доступные цены</h4>
+                                <p>Одна из самых доступных стран Европы</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="culture-image fade-in">
+                    <div style="height: 400px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 1.1rem;">
+                        <img src="./images/chiz.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Процесс поступления -->
+    <section class="admission-process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Процесс поступления в чешские университеты</h2>
+                <p>Пошаговое руководство для будущих студентов</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step fade-in">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Консультация</h3>
+                        <p>Определяем ваши цели, выбираем университет и программу</p>
+                    </div>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Языковая подготовка</h3>
+                        <p>Помогаем с изучением чешского языка до уровня B2</p>
+                    </div>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Подготовка документов</h3>
+                        <p>Помогаем собрать и оформить все необходимые документы</p>
+                    </div>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Подача заявления</h3>
+                        <p>Отправляем заявку в выбранные университеты</p>
+                    </div>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Получение визы</h3>
+                        <p>Помогаем оформить долгосрочную студенческую визу</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Другие страны -->
+    <section class="other-countries">
+        <div class="container">
+            <div class="section-title">
+                <h2>Другие страны для обучения</h2>
+                <p>Исследуйте все возможности, которые мы предлагаем</p>
+            </div>
+            <div class="countries-grid">
+                <div class="country-card fade-in">
+                    <div class="country-flag">
+                        <img src="./images/korea-1.jpg" style="width: 100%; height: 150px;">
+                    </div>
+                    <div class="country-info">
+                        <h3>Южная Корея</h3>
+                        <p>Передовые технологии, качественное образование</p>
+                        <a href="south-korea.html" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                <div class="country-card fade-in">
+                    <div class="country-flag" >
+                         <img src="./images/chinese.jpg" style="width: 100%; height: 150px;">
+                    </div>
+                    <div class="country-info">
+                        <h3>Китай</h3>
+                        <p>Современные университеты с вековыми традициями</p>
+                        <a href="china.html" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                <div class="country-card fade-in">
+                    <div class="country-flag" >
+                        <img src="./images/spain.jpg" style="width: 100%; height: 150px;">
+
+                    </div>
+                    <div class="country-info">
+                        <h3>Испания</h3>
+                        <p>Европейское образование в солнечной стране</p>
+                        <a href="spain.html" class="btn" style="margin-top: 20px;">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA секция -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="fade-in">Готовы начать обучение в Чехии?</h2>
+            <p class="fade-in">Оставьте заявку, и наш специалист свяжется с вами для бесплатной консультации</p>
+            <a href="./index.html#application" class="btn btn-gold fade-in">Подать заявку</a>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Kiparis Global Academy</h3>
+                    <p>Мы помогаем студентам поступать и учиться в ведущих вузах Южной Кореи, Китая, Испании и Чехии.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Страны</h3>
+                    <ul>
+                        <li><a href="south-korea.html">Южная Корея</a></li>
+                        <li><a href="china.html">Китай</a></li>
+                        <li><a href="spain.html">Испания</a></li>
+                        <li><a href="czech.html">Чехия</a></li>
+                    </ul>
+                </div>
+            
+                <div class="footer-col">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>📞 +7 (495) 123-45-67</li>
+                        <li>✉️ info@kiparis-academy.ru</li>
+                        <li>📍 г. Москва, ул. Образцова, д. 25</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Kiparis Global Academy. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript для интерактивных элементов
+        document.addEventListener('DOMContentLoaded', function() {
+            // Мобильное меню
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const nav = document.querySelector('nav ul');
+            
+            mobileMenu.addEventListener('click', function() {
+                nav.classList.toggle('show');
+            });
+            
+            // Табы для университетов
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const universityCards = document.querySelectorAll('.university-card');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Удаляем активный класс у всех кнопок
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    // Добавляем активный класс текущей кнопке
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-tab');
+                    
+                    universityCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category').includes(category)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Анимация появления элементов при скролле
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('fade-in');
+                    }
+                });
+            };
+            
+            // Запускаем при загрузке и при скролле
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll();
+        });
+    </script>
+</body>
+</html>

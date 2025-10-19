@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас - Kiparis Global Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Цветовая палитра */
+        :root {
+            --dark-green: #1E4232;    /* Глубокий кипарисовый зелёный */
+            --light-green: #3F6E4C;   /* Мягкий природный зелёный */
+            --dark-blue: #0C1B2C;     /* Тёмно-синий / почти чёрный */
+            --white: #FFFFFF;         /* Белый */
+            --gold: #B69B64;          /* Золотисто-бежевый */
+            --light-bg: #F8F9FA;      /* Светлый фон для секций */
+        }
+        
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark-blue);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--dark-green);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--light-green);
+            color: var(--white);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(30, 66, 50, 0.2);
+        }
+        
+        .btn-gold {
+            background: var(--gold);
+            color: var(--dark-blue);
+        }
+        
+        .btn-gold:hover {
+            background: #a08654;
+            color: var(--white);
+        }
+        
+        section {
+            padding: 50px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            margin: 15px auto;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--dark-blue);
+            font-size: 1.1rem;
+        }
+        
+         /* Шапка */
+        header {
+            background: var(--dark-blue);
+            box-shadow: 0 2px 15px rgba(12, 27, 44, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .logo span {
+            color: var(--gold);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 10px 0;
+            display: block;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        /* Выпадающее меню для Университетов */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 280px;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(12, 27, 44, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            padding: 20px 0;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu:before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 30px;
+            width: 16px;
+            height: 16px;
+            background: var(--white);
+            transform: rotate(45deg);
+        }
+        
+        .country-items {
+            display: flex;
+            align-items: center;
+            padding: 12px 25px;
+            text-decoration: none;
+            color: var(--dark-blue);
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .country-items:hover {
+            background: var(--light-bg);
+            border-left: 3px solid var(--light-green);
+            padding-left: 30px;
+        }
+        
+        .country-flags {
+            width: 30px;
+            height: 20px;
+            border-radius: 2px;
+            margin-right: 15px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .country-name {
+            font-weight: 500;
+            color: var(--dark-blue);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--white);
+        }
+        /* Герой секция О нас */
+        .about-hero {
+            background: linear-gradient(rgba(30, 66, 50, 0.9), rgba(12, 27, 44, 0.8)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .about-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+        
+        /* Наша история */
+        .our-story {
+            background: var(--white);
+        }
+        
+        .story-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .story-text {
+            flex: 1;
+        }
+        
+        .story-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .story-text p {
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+        }
+        
+        .story-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(30, 66, 50, 0.1);
+            position: relative;
+        }
+        
+        .story-image:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            z-index: -1;
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Наша миссия и ценности */
+        .mission-values {
+            background: var(--light-bg);
+        }
+        
+        .mission-content {
+            display: flex;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .mission-text {
+            flex: 1;
+        }
+        
+        .mission-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .mission-text p {
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .value-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(12, 27, 44, 0.08);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--light-green);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(12, 27, 44, 0.1);
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--light-green);
+            margin-bottom: 20px;
+        }
+        
+        .value-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark-green);
+        }
+        
+        .value-card p {
+            color: var(--dark-blue);
+        }
+        
+        /* Наша команда */
+        .our-team {
+            background: var(--white);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(12, 27, 44, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(12, 27, 44, 0.15);
+        }
+        
+        .team-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .team-info {
+            padding: 25px;
+        }
+        
+        .team-info h3 {
+            margin-bottom: 5px;
+            color: var(--dark-green);
+        }
+        
+        .team-info .position {
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .team-info p {
+            color: var(--dark-blue);
+            font-size: 0.95rem;
+        }
+        /* Достижения */
+        .achievements {
+            background: var(--white);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .stat-card {
+            padding: 30px 20px;
+            background: var(--light-bg);
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--light-green);
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .stat-text {
+            color: var(--dark-blue);
+            font-weight: 500;
+        }
+        
+        /* Отзывы */
+        .testimonials {
+            background: var(--light-bg);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(12, 27, 44, 0.08);
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.3;
+            font-family: serif;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 20px;
+            font-style: italic;
+            color: var(--dark-blue);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--light-green);
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 600;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: var(--dark-green);
+        }
+        
+        .author-info p {
+            color: var(--dark-blue);
+            font-size: 0.9rem;
+        }
+        
+        /* Футер */
+        footer {
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 70px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+        
+        .footer-col p {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--gold);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .story-content, .mission-content {
+                flex-direction: column;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--dark-blue);
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(12, 27, 44, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+     <!-- Шапка -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Kiparis<span>Global</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li class="dropdown">
+                        <a href="./universities.html">Университеты</a>
+                        <div class="dropdown-menu">
+                            <a href="./south-korea.html" class="country-items">
+                                <div class="country-flags" style="background-color: #0047A0;"></div>
+                                <span class="country-name">Южная Корея</span>
+                            </a>
+                            <a href="./china.html" class="country-items">
+                                <div class="country-flags" style="background-color: #DE2910;"></div>
+                                <span class="country-name">Китай</span>
+                            </a>
+                            <a href="./spain.html" class="country-items">
+                                <div class="country-flags" style="background-color: #C60B1E;"></div>
+                                <span class="country-name">Испания</span>
+                            </a>
+                            <a href="./czech.html" class="country-items">
+                                <div class="country-flags" style="background-color: #D7141A;"></div>
+                                <span class="country-name">Чехия</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="application.html">Анкета</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">☰</div>
+        </div>
+    </header>
+
+    <!-- Герой секция О нас -->
+    <section class="about-hero">
+        <div class="container">
+            <h1 class="fade-in">Kiparis Global Academy</h1>
+            <p class="fade-in">Молодая, но опытная команда специалистов, которые сами прошли путь обучения за границей и теперь помогают другим осуществить свою мечту</p>
+        </div>
+    </section>
+
+    <!-- Наша история -->
+    <section class="our-story" id="story">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-text fade-in">
+                    <h2>Наша история</h2>
+                    <p>Kiparis Global Academy была основана в 2025 году выпускниками ведущих университетов Южной Кореи, Китая, Испании и Чехии, которые на собственном опыте прошли все этапы поступления и адаптации в новой стране.</p>
+                    <p>Мы понимаем, насколько сложным может быть процесс подготовки документов, выбора университета и адаптации в чужой стране. Именно поэтому мы создали компанию, которая предлагает не просто консультации, а полное сопровождение на каждом этапе.</p>
+                </div>
+                <div class="story-image fade-in">
+                    <div style="height: 400px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 1.1rem;">
+                        <img src="./images/bg.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Наша команда -->
+    <section class="our-team" id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наша команда</h2>
+                <p>Профессионалы с международным опытом, которые помогут вам на каждом этапе</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-image" style="background-color: #e9ecef;"></div>
+                    <div class="team-info">
+                        <h3>Деннис</h3>
+                        <div class="position">Основатель и CEO</div>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="team-card fade-in">
+                    <div class="team-image" style="background-color: #e9ecef;">
+                        <img src="./images/амина.jpeg" class="team-image" alt="">
+                    </div>
+                    <div class="team-info">
+                        <h3> Амина</h3>
+                        <div class="position">Куратор</div>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="team-card fade-in">
+                    <div class="team-image" style="background-color: #e9ecef;">
+                        <img src="./images/виктория.jpg" class="team-image" alt="">
+                    </div>
+                    <div class="team-info">
+                        <h3>Виктория</h3>
+                        <div class="position">Куратор</div>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="team-card fade-in">
+                    <div class="team-image" style="background-color: #e9ecef;">
+                        <img src="./images/альтаир.jpg" class="team-image" alt="">
+                    </div>
+                    <div class="team-info">
+                        <h3>Альтаир</h3>
+                        <div class="position">Куратор</div>
+                        <p> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Достижения -->
+    <section class="achievements" id="achievements">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши достижения</h2>
+                <p>Цифры, которые говорят сами за себя</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card fade-in">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-text">Успешных поступлений</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">4</div>
+                    <div class="stat-text">Страны обучения</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-text">Положительных виз</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-text">Университетов-партнеров</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">5</div>
+                    <div class="stat-text">Лет на рынке</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Отзывы наших студентов</h2>
+                <p>Что говорят о нас те, кто уже учится за границей</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-text">
+                        Kiparis Global Academy помогли мне поступить в Seoul National University. Особенно хочу поблагодарить за помощь с мотивационным письмом - его хвалили при поступлении! Сейчас учусь на факультете международных отношений и очень благодарен команде за поддержку.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">АС</div>
+                        <div class="author-info">
+                            <h4>Алексей Смирнов</h4>
+                            <p>Seoul National University, Южная Корея</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-text">
+                        Поступление в Китай казалось мне нереальной мечтой, но с помощью Kiparis Global Academy я стала студенткой Peking University! Они помогли не только с документами, но и с подготовкой к экзамену HSK, поиском жилья и адаптацией в новой стране.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">МЗ</div>
+                        <div class="author-info">
+                            <h4>Мария Захарова</h4>
+                            <p>Peking University, Китай</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-text">
+                        Выбрал Kiparis Global Academy по рекомендации друга и не пожалел! Поступил в University of Barcelona на программу MBA. Команда сопровождала меня на всех этапах - от выбора программы до получения визы. Особенно ценю, что всегда были на связи и оперативно решали все вопросы.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ДК</div>
+                        <div class="author-info">
+                            <h4>Денис Ковалев</h4>
+                            <p>University of Barcelona, Испания</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Kiparis Global Academy</h3>
+                    <p>Мы помогаем студентам поступать и учиться в ведущих вузах Южной Кореи, Китая, Испании и Чехии.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Страны</h3>
+                    <ul>
+                        <li><a href="south-korea.html">Южная Корея</a></li>
+                        <li><a href="china.html">Китай</a></li>
+                        <li><a href="spain.html">Испания</a></li>
+                        <li><a href="czech.html">Чехия</a></li>
+                    </ul>
+                </div>
+               
+                <div class="footer-col">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>📞 +7 (707) 528-19-72</li>
+                        <li>✉️ info@kiparis-academy.ru</li>
+                        <li>📍 г. Астана, ул. Образцова, д. 25</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Kiparis Global Academy. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript для интерактивных элементов
+        document.addEventListener('DOMContentLoaded', function() {
+            // Мобильное меню
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const nav = document.querySelector('nav ul');
+            
+            mobileMenu.addEventListener('click', function() {
+                nav.classList.toggle('show');
+            });
+            
+            // Анимация появления элементов при скролле
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('fade-in');
+                    }
+                });
+            };
+            
+            // Запускаем при загрузке и при скролле
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll();
+            
+            // Плавная прокрутка к якорям
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if (this.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Закрываем мобильное меню после клика
+                            if (nav.classList.contains('show')) {
+                                nav.classList.remove('show');
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

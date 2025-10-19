@@ -15,11 +15,30 @@
             <nav>
                 <ul>
                     <li><a href="index.html">Главная</a></li>
-                    <li><a href="#about">О нас</a></li>
-                    <li><a href="#services">Услуги</a></li>
-                    <li><a href="#universities">Университеты</a></li>
-                    <li><a href="#application">Анкета</a></li>
-                    <li><a href="#contacts">Контакты</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li class="dropdown">
+                        <a href="./universities.html">Университеты</a>
+                        <div class="dropdown-menu">
+                            <a href="./south-korea.html" class="country-items">
+                                <div class="country-flags" style="background-color: #0047A0;"></div>
+                                <span class="country-name">Южная Корея</span>
+                            </a>
+                            <a href="./china.html" class="country-items">
+                                <div class="country-flags" style="background-color: #DE2910;"></div>
+                                <span class="country-name">Китай</span>
+                            </a>
+                            <a href="./spain.html" class="country-items">
+                                <div class="country-flags" style="background-color: #C60B1E;"></div>
+                                <span class="country-name">Испания</span>
+                            </a>
+                            <a href="./czech.html" class="country-items">
+                                <div class="country-flags" style="background-color: #D7141A;"></div>
+                                <span class="country-name">Чехия</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="application.html">Анкета</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
                 </ul>
             </nav>
             <div class="mobile-menu">☰</div>
@@ -199,7 +218,7 @@
         <span>📍 Сеул</span>
         <span>💰 от $6,500/год</span>
       </div>
-      <a href="snu.html" class="btn">Подробнее</a>
+      <a href="http://www.useoul.edu/" class="btn">Подробнее</a>
     </div>
   </div>
 
@@ -216,7 +235,7 @@
         <span>📍 Пекин</span>
         <span>💰 от $5,000/год</span>
       </div>
-      <a href="pku.html" class="btn">Подробнее</a>
+      <a href="https://english.pku.edu.cn/" class="btn">Подробнее</a>
     </div>
   </div>
 
@@ -250,7 +269,7 @@
         <span>📍 Сеул</span>
         <span>💰 от $6,500/год</span>
       </div>
-      <a href="ewha.html" class="btn">Подробнее</a>
+      <a href="https://www.ewha.ac.kr/ewhaen/index.do" class="btn">Подробнее</a>
     </div>
   </div>
   <!-- Китай -->
@@ -266,7 +285,7 @@
       <span>📍 Пекин</span>
       <span>💰 от $7,000/год</span>
     </div>
-    <a href="tsinghua.html" class="btn">Подробнее</a>
+    <a href="https://www.tsinghua.edu.cn/en/" class="btn">Подробнее</a>
   </div>
 </div>
 
@@ -283,7 +302,7 @@
       <span>📍 Барселона</span>
       <span>💰 от $5,500/год</span>
     </div>
-    <a href="ub.html" class="btn">Подробнее</a>
+    <a href="https://web.ub.edu/en/" class="btn">Подробнее</a>
   </div>
 </div>
 
@@ -300,7 +319,7 @@
       <span>📍 Прага</span>
       <span>💰 от $4,000/год</span>
     </div>
-    <a href="charles.html" class="btn">Подробнее</a>
+    <a href="https://cuni.cz/UKEN-1.html" class="btn">Подробнее</a>
   </div>
 </div>
 
@@ -318,7 +337,7 @@
         <span>📍 Пусан</span>
         <span>💰 от $4,000/год</span>
       </div>
-      <a href="pusan.html" class="btn">Подробнее</a>
+      <a href="https://www.pusan.ac.kr/eng/" class="btn">Подробнее</a>
     </div>
   </div>
 
@@ -481,16 +500,16 @@
     </footer>
 
     <script>
-        // JavaScript для интерактивных элементов
+          // JavaScript для мобильного меню
         document.addEventListener('DOMContentLoaded', function() {
-            // Мобильное меню
             const mobileMenu = document.querySelector('.mobile-menu');
             const nav = document.querySelector('nav ul');
             
             mobileMenu.addEventListener('click', function() {
                 nav.classList.toggle('show');
             });
-            
+        });
+                    
             // Фильтр университетов
             const filterButtons = document.querySelectorAll('.filter-btn');
             const universityCards = document.querySelectorAll('.university-card');
@@ -540,7 +559,7 @@
             // Запускаем при загрузке и при скролле
             window.addEventListener('scroll', fadeInOnScroll);
             fadeInOnScroll();
-        });
+    
     </script>
 </body>
 </html>

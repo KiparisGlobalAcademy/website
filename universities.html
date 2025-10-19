@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Университеты за рубежом - Kiparis Global Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Цветовая палитра */
+        :root {
+            --dark-green: #1E4232;    /* Глубокий кипарисовый зелёный */
+            --light-green: #3F6E4C;   /* Мягкий природный зелёный */
+            --dark-blue: #0C1B2C;     /* Тёмно-синий / почти чёрный */
+            --white: #FFFFFF;         /* Белый */
+            --gold: #B69B64;          /* Золотисто-бежевый */
+            --light-bg: #F8F9FA;      /* Светлый фон для секций */
+        }
+        
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark-blue);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--dark-green);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--light-green);
+            color: var(--white);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(30, 66, 50, 0.2);
+        }
+        
+        .btn-gold {
+            background: var(--gold);
+            color: var(--dark-blue);
+        }
+        
+        .btn-gold:hover {
+            background: #a08654;
+            color: var(--white);
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            margin: 15px auto;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--dark-blue);
+            font-size: 1.1rem;
+        }
+        
+        /* Шапка */
+        header {
+            background: var(--dark-blue);
+            box-shadow: 0 2px 15px rgba(12, 27, 44, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .logo span {
+            color: var(--gold);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 10px 0;
+            display: block;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        /* Выпадающее меню для Университетов */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 280px;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(12, 27, 44, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            padding: 20px 0;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu:before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 30px;
+            width: 16px;
+            height: 16px;
+            background: var(--white);
+            transform: rotate(45deg);
+        }
+        
+        .country-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 25px;
+            text-decoration: none;
+            color: var(--dark-blue);
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .country-item:hover {
+            background: var(--light-bg);
+            border-left: 3px solid var(--light-green);
+            padding-left: 30px;
+        }
+        
+        .country-flag {
+            width: 30px;
+            height: 20px;
+            border-radius: 2px;
+            margin-right: 15px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .country-name {
+            font-weight: 500;
+            color: var(--dark-blue);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--white);
+        }
+        
+        /* Хлебные крошки */
+        .breadcrumb {
+            padding: 20px 0 40px;
+            background: var(--light-bg);
+        }      
+        /* Фильтры университетов */
+        .universities-filters {
+            background: var(--white);
+            padding: 30px 0;
+            position: sticky;
+            top: 70px;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(12, 27, 44, 0.05);
+        }
+        
+        .filters-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .filter-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--dark-green);
+        }
+        
+        .filter-select {
+            padding: 10px 15px;
+            border: 2px solid var(--light-green);
+            border-radius: 4px;
+            background: var(--white);
+            color: var(--dark-blue);
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-select:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(63, 110, 76, 0.2);
+        }
+        
+        .search-box {
+            padding: 10px 15px;
+            border: 2px solid var(--light-green);
+            border-radius: 4px;
+            font-size: 0.95rem;
+            width: 250px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(63, 110, 76, 0.2);
+        }
+        
+        .reset-filters {
+            background: var(--gold);
+            color: var(--dark-blue);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .reset-filters:hover {
+            background: #a08654;
+            color: var(--white);
+        }
+        
+        /* Сетка университетов */
+        .universities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .university-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(12, 27, 44, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .university-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(12, 27, 44, 0.15);
+        }
+        
+        .university-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .university-country {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--gold);
+            color: var(--dark-blue);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .university-rank {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--light-green);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .free-badge {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: var(--light-green);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .university-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .university-info h3 {
+            margin-bottom: 10px;
+            color: var(--dark-green);
+            font-size: 1.3rem;
+        }
+        
+        .university-location {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+            font-size: 0.9rem;
+        }
+        
+        .university-location svg {
+            margin-right: 8px;
+            color: var(--light-green);
+        }
+        
+        .university-info p {
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+        
+        .university-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--dark-blue);
+        }
+        
+        .university-price {
+            font-weight: 600;
+            color: var(--light-green);
+        }
+        
+        /* Счетчик результатов */
+        .results-count {
+            text-align: center;
+            margin: 30px 0;
+            color: var(--dark-blue);
+            font-size: 1.1rem;
+        }
+        
+        .results-count span {
+            font-weight: 600;
+            color: var(--light-green);
+        }
+        
+        /* Футер */
+        footer {
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 70px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+        
+        .footer-col p {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--gold);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .universities-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--dark-blue);
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(12, 27, 44, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: rgba(255,255,255,0.1);
+                margin-top: 10px;
+            }
+            
+            .dropdown-menu:before {
+                display: none;
+            }
+            
+            .country-item {
+                color: var(--white);
+                border-left: 3px solid var(--gold);
+            }
+            
+            .country-item:hover {
+                background: rgba(255,255,255,0.1);
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .filters-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .filter-group {
+                width: 100%;
+            }
+            
+            .search-box {
+                width: 100%;
+            }
+            
+            .universities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Kiparis<span>Global</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li class="dropdown">
+                        <a href="./universities.html">Университеты</a>
+                        <div class="dropdown-menu">
+                            <a href="./south-korea.html" class="country-item">
+                                <div class="country-flag" style="background-color: #0047A0;"></div>
+                                <span class="country-name">Южная Корея</span>
+                            </a>
+                            <a href="./china.html" class="country-item">
+                                <div class="country-flag" style="background-color: #DE2910;"></div>
+                                <span class="country-name">Китай</span>
+                            </a>
+                            <a href="./spain.html" class="country-item">
+                                <div class="country-flag" style="background-color: #C60B1E;"></div>
+                                <span class="country-name">Испания</span>
+                            </a>
+                            <a href="./czech.html" class="country-item">
+                                <div class="country-flag" style="background-color: #D7141A;"></div>
+                                <span class="country-name">Чехия</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="application.html">Анкета</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">☰</div>
+        </div>
+    </header>
+
+    <!-- Хлебные крошки -->
+    <section class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <span>Университеты</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Все университеты -->
+    <section class="universities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Все университеты</h2>
+                <p>Выбирайте из лучших университетов Южной Кореи, Китая, Испании и Чехии</p>
+            </div>
+            
+            <!-- Фильтры -->
+            <div class="universities-filters">
+                <div class="filters-container">
+                    <div class="filter-group">
+                        <div class="filter-label">Страна</div>
+                        <select class="filter-select" id="country-filter">
+                            <option value="all">Все страны</option>
+                            <option value="korea">Южная Корея</option>
+                            <option value="china">Китай</option>
+                            <option value="spain">Испания</option>
+                            <option value="czech">Чехия</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <div class="filter-label">Город</div>
+                        <select class="filter-select" id="city-filter">
+                            <option value="all">Все города</option>
+                            <!-- Города будут заполнены через JS -->
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <div class="filter-label">Стоимость</div>
+                        <select class="filter-select" id="price-filter">
+                            <option value="all">Любая стоимость</option>
+                            <option value="free">Бесплатно</option>
+                            <option value="low">До $3,000/год</option>
+                            <option value="medium">$3,000 - $6,000/год</option>
+                            <option value="high">Свыше $6,000/год</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <div class="filter-label">Поиск</div>
+                        <input type="text" class="search-box" id="search-input" placeholder="Название университета...">
+                    </div>
+                    
+                    <button class="reset-filters" id="reset-filters">Сбросить фильтры</button>
+                </div>
+            </div>
+            
+            <!-- Счетчик результатов -->
+            <div class="results-count">
+                Найдено университетов: <span id="results-count">32</span>
+            </div>
+            
+            <!-- Сетка университетов -->
+            <div class="universities-grid" id="universities-container">
+                <!-- Университеты будут заполнены через JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Kiparis Global Academy</h3>
+                    <p>Мы помогаем студентам поступать и учиться в ведущих вузах Южной Кореи, Китая, Испании и Чехии.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Страны</h3>
+                    <ul>
+                        <li><a href="south-korea.html">Южная Корея</a></li>
+                        <li><a href="china.html">Китай</a></li>
+                        <li><a href="spain.html">Испания</a></li>
+                        <li><a href="czech.html">Чехия</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>📞 +7 (495) 123-45-67</li>
+                        <li>✉️ info@kiparis-academy.ru</li>
+                        <li>📍 г. Москва, ул. Образцова, д. 25</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Kiparis Global Academy. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Данные университетов
+        const universities = [
+            // Южная Корея
+            {
+                id: 1,
+                name: "Seoul National University",
+                country: "korea",
+                city: "Сеул",
+                description: "Ведущий национальный университет Кореи, известный сильными программами в области права, медицины и инженерии.",
+                price: 6500,
+                rank: "Топ-1 в Корее",
+                image: "./images/seoulNationalUni.jpg"
+            },
+            {
+                id: 2,
+                name: "KAIST",
+                country: "korea",
+                city: "Тэджон",
+                description: "Корейский передовой институт науки и технологий - ведущий технический вуз страны с фокусом на исследования.",
+                price: 8000,
+                rank: "Топ-2 в Корее",
+                image: "https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: 3,
+                name: "Korea University",
+                country: "korea",
+                city: "Сеул",
+                description: "Частный исследовательский университет с сильными программами в области бизнеса, права и гуманитарных наук.",
+                price: 7000,
+                rank: "Топ-5 в Корее",
+                image: "./images/koreaUni.jpeg"
+            },
+            {
+                id: 4,
+                name: "Yonsei University",
+                country: "korea",
+                city: "Сеул",
+                description: "Один из старейших и самых престижных университетов Кореи, известный международными программами.",
+                price: 7500,
+                rank: "Топ-3 в Корее",
+                image: "https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: 5,
+                name: "POSTECH",
+                country: "korea",
+                city: "Пхохан",
+                description: "Пхоханский университет науки и технологий - небольшой, но мощный исследовательский университет.",
+                price: 8500,
+                rank: "Топ-7 в Корее",
+                image: "./images/postech.jpg"
+            },
+            {
+                id: 6,
+                name: "Hanyang University",
+                country: "korea",
+                city: "Сеул",
+                description: "Крупный частный университет с сильными инженерными программами и активной исследовательской деятельностью.",
+                price: 6000,
+                rank: "Топ-10 в Корее",
+                image: "https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: 7,
+                name: "Ewha Womans University",
+                country: "korea",
+                city: "Сеул",
+                description: "Крупнейший женский университет в мире с сильными программами в области гуманитарных и социальных наук.",
+                price: 7000,
+                rank: "Топ-8 в Корее",
+                image: "./images/ewha.jpg"
+            },
+            {
+                id: 8,
+                name: "Sungkyunkwan University",
+                country: "korea",
+                city: "Сеул",
+                description: "Один из старейших университетов Восточной Азии с сильными программами в области бизнеса и инженерии.",
+                price: 7200,
+                rank: "Топ-6 в Корее",
+                image: "https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            
+            // Китай
+            {
+                id: 9,
+                name: "Peking University",
+                country: "china",
+                city: "Пекин",
+                description: "Ведущий университет Китая, известный сильными программами в области гуманитарных наук, права и бизнеса.",
+                price: 5000,
+                rank: "Топ-1 в Китае",
+                image: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: 10,
+                name: "Tsinghua University",
+                country: "china",
+                city: "Пекин",
+                description: "Ведущий технический университет Китая с фокусом на инженерии, технологиях и естественных науках.",
+                price: 6000,
+                rank: "Топ-2 в Китае",
+                image: "https://images.unsplash.com/photo-1542662565-7e4b66bae529?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: 11,
+                name: "Fudan University",
+                country: "china",
+                city: "Шанхай",
+                description: "Престижный университет с сильными программами в области медицины, журналистики и международных отношений.",
+                price: 5500,
+                rank: "Топ-3 в Китае",
+                image: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: 12,
+                name: "Shanghai Jiao Tong University",
+                country: "china",
+                city: "Шанхай",
+                description: "Ведущий технический университет с сильными программами в области инженерии, бизнеса и медицины.",
+                price: 5800,
+                rank: "Топ-4 в Китае",
+                image: "https://images.unsplash.com/photo-1542662565-7e4b66bae529?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: 13,
+                name: "Zhejiang University",
+                country: "china",
+                city: "Ханчжоу",
+                description: "Крупный исследовательский университет с сильными программами в области инженерии, сельского хозяйства и медицины.",
+                price: 4500,
+                rank: "Топ-5 в Китае",
+                image: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: 14,
+                name: "Nanjing University",
+                country: "china",
+                city: "Нанкин",
+                description: "Один из старейших и самых престижных университетов Китая с сильными программами в естественных науках.",
+                price: 4800,
+                rank: "Топ-7 в Китае",
+                image: "https://images.unsplash.com/photo-1542662565-7e4b66bae529?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            
+            // Испания
+            {
+                id: 15,
+                name: "Universidad Complutense de Madrid",
+                country: "spain",
+                city: "Мадрид",
+                description: "Один из старейших университетов мира с богатой историей и сильными программами в области гуманитарных наук, медицины и права.",
+                price: 2000,
+                rank: "Топ-1 в Испании",
+                image: "https://images.unsplash.com/photo-1543785734-4b6e564642f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: 16,
+                name: "University of Barcelona",
+                country: "spain",
+                city: "Барселона",
+                description: "Ведущий исследовательский университет с сильными программами в области медицины, естественных наук и гуманитарных наук.",
+                price: 2500,
+                rank: "Топ-2 в Испании",
+                image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: 17,
+                name: "Universidad Autónoma de Madrid",
+                country: "spain",
+                city: "Мадрид",
+                description: "Современный университет с сильными программами в области естественных наук, инженерии и социальных наук.",
+                price: 2200,
+                rank: "Топ-3 в Испании",
+                image: "https://images.unsplash.com/photo-1543785734-4b6e564642f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: 18,
+                name: "Universitat Pompeu Fabra",
+                country: "spain",
+                city: "Барселона",
+                description: "Современный университет с сильными программами в области экономики, бизнеса, права и социальных наук.",
+                price: 3000,
+                rank: "Топ-4 в Испании",
+                image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: 19,
+                name: "University of Granada",
+                country: "spain",
+                city: "Гранада",
+                description: "Один из старейших университетов Испании с сильными программами в области гуманитарных наук, права и туризма.",
+                price: 1800,
+                rank: "Топ-5 в Испании",
+                image: "https://images.unsplash.com/photo-1543785734-4b6e564642f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: 20,
+                name: "Universidad Politécnica de Madrid",
+                country: "spain",
+                city: "Мадрид",
+                description: "Ведущий технический университет Испании с сильными программами в области инженерии, архитектуры и аэронавтики.",
+                price: 2800,
+                rank: "Топ-6 в Испании",
+                image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            
+            // Чехия
+            {
+                id: 21,
+                name: "Карлов университет",
+                country: "czech",
+                city: "Прага",
+                description: "Старейший университет Центральной Европы, основанный в 1348 году. Сильные программы в области медицины, права и гуманитарных наук.",
+                price: 0,
+                rank: "Топ-1 в Чехии",
+                image: "https://images.unsplash.com/photo-1519677100203-a0e668c92439?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: 22,
+                name: "Чешский технический университет",
+                country: "czech",
+                city: "Прага",
+                description: "Ведущий технический университет Чехии с сильными программами в области инженерии, архитектуры и информационных технологий.",
+                price: 3000,
+                rank: "Топ-2 в Чехии",
+                image: "https://static.tildacdn.com/tild3765-3537-4063-a437-306339343832/__.png"
+            },
+            {
+                id: 23,
+                name: "Университет Масарика",
+                country: "czech",
+                city: "Брно",
+                description: "Второй по величине университет Чехии с современным кампусом и сильными программами в области права, социальных и естественных наук.",
+                price: 0,
+                rank: "Топ-3 в Чехии",
+                image: "https://images.unsplash.com/photo-1519677100203-a0e668c92439?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: 24,
+                name: "Высшая школа экономики",
+                country: "czech",
+                city: "Прага",
+                description: "Ведущий экономический университет Центральной Европы с сильными программами в области бизнеса, экономики и международных отношений.",
+                price: 3500,
+                rank: "Топ-4 в Чехии",
+                image: "https://cdn.globaldialog.ru/_/manager/files/546/a43f4bd000/vse1.jpg"
+            },
+            {
+                id: 25,
+                name: "Технический университет Брно",
+                country: "czech",
+                city: "Брно",
+                description: "Крупный технический университет с сильными программами в области инженерии, информационных технологий и архитектуры.",
+                price: 0,
+                rank: "Топ-5 в Чехии",
+                image: "https://images.unsplash.com/photo-1519677100203-a0e668c92439?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: 26,
+                name: "Англо-Американский университет",
+                country: "czech",
+                city: "Прага",
+                description: "Частный университет с программами на английском языке в области бизнеса, международных отношений и гуманитарных наук.",
+                price: 5000,
+                rank: "Топ-6 в Чехии",
+                image: "https://vtgstudy.com/wp-content/uploads/2017/09/Postuplenie-v-Anglo-Amerikanskij-Institut1-600x315.jpg"
+            }
+        ];
+
+        // Названия стран для отображения
+        const countryNames = {
+            'korea': 'Южная Корея',
+            'china': 'Китай',
+            'spain': 'Испания',
+            'czech': 'Чехия'
+        };
+
+        // Цвета флагов для каждой страны
+        const countryColors = {
+            'korea': '#0047A0',
+            'china': '#DE2910',
+            'spain': '#C60B1E',
+            'czech': '#D7141A'
+        };
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            // Мобильное меню
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const nav = document.querySelector('nav ul');
+            
+            mobileMenu.addEventListener('click', function() {
+                nav.classList.toggle('show');
+            });
+            
+            // Заполнение фильтра городов
+            populateCityFilter();
+            
+            // Отображение всех университетов
+            displayUniversities(universities);
+            
+            // Обработчики событий для фильтров
+            document.getElementById('country-filter').addEventListener('change', filterUniversities);
+            document.getElementById('city-filter').addEventListener('change', filterUniversities);
+            document.getElementById('price-filter').addEventListener('change', filterUniversities);
+            document.getElementById('search-input').addEventListener('input', filterUniversities);
+            document.getElementById('reset-filters').addEventListener('click', resetFilters);
+        });
+
+        // Заполнение фильтра городов
+        function populateCityFilter() {
+            const cityFilter = document.getElementById('city-filter');
+            const cities = [...new Set(universities.map(u => u.city))].sort();
+            
+            cities.forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                cityFilter.appendChild(option);
+            });
+        }
+
+        // Отображение университетов
+        function displayUniversities(universitiesToShow) {
+            const container = document.getElementById('universities-container');
+            const countElement = document.getElementById('results-count');
+            
+            // Обновляем счетчик
+            countElement.textContent = universitiesToShow.length;
+            
+            // Очищаем контейнер
+            container.innerHTML = '';
+            
+            // Добавляем университеты
+            universitiesToShow.forEach(university => {
+                const card = createUniversityCard(university);
+                container.appendChild(card);
+            });
+        }
+
+        // Создание карточки университета
+        function createUniversityCard(university) {
+            const card = document.createElement('div');
+            card.className = 'university-card fade-in';
+            card.setAttribute('data-country', university.country);
+            card.setAttribute('data-city', university.city);
+            card.setAttribute('data-price', university.price);
+            
+            const priceText = university.price === 0 ? 'Бесплатно' : `от $${university.price}/год`;
+            
+            card.innerHTML = `
+                <div class="university-image" style="background-image: url('${university.image}')">
+                    <div class="university-country" style="background: ${countryColors[university.country]}">
+                        ${countryNames[university.country]}
+                    </div>
+                    <div class="university-rank">${university.rank}</div>
+                    ${university.price === 0 ? '<div class="free-badge">Бесплатно</div>' : ''}
+                </div>
+                <div class="university-info">
+                    <h3>${university.name}</h3>
+                    <div class="university-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        ${university.city}
+                    </div>
+                    <p>${university.description}</p>
+                    <div class="university-meta">
+                        <span class="university-price">${priceText}</span>
+                        <a href="#" class="btn">Подробнее</a>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Фильтрация университетов
+        function filterUniversities() {
+            const countryFilter = document.getElementById('country-filter').value;
+            const cityFilter = document.getElementById('city-filter').value;
+            const priceFilter = document.getElementById('price-filter').value;
+            const searchFilter = document.getElementById('search-input').value.toLowerCase();
+            
+            const filtered = universities.filter(university => {
+                // Фильтр по стране
+                if (countryFilter !== 'all' && university.country !== countryFilter) {
+                    return false;
+                }
+                
+                // Фильтр по городу
+                if (cityFilter !== 'all' && university.city !== cityFilter) {
+                    return false;
+                }
+                
+                // Фильтр по цене
+                if (priceFilter !== 'all') {
+                    if (priceFilter === 'free' && university.price !== 0) {
+                        return false;
+                    } else if (priceFilter === 'low' && (university.price === 0 || university.price > 3000)) {
+                        return false;
+                    } else if (priceFilter === 'medium' && (university.price < 3000 || university.price > 6000)) {
+                        return false;
+                    } else if (priceFilter === 'high' && university.price <= 6000) {
+                        return false;
+                    }
+                }
+                
+                // Поиск по названию
+                if (searchFilter && !university.name.toLowerCase().includes(searchFilter)) {
+                    return false;
+                }
+                
+                return true;
+            });
+            
+            displayUniversities(filtered);
+        }
+
+        // Сброс фильтров
+        function resetFilters() {
+            document.getElementById('country-filter').value = 'all';
+            document.getElementById('city-filter').value = 'all';
+            document.getElementById('price-filter').value = 'all';
+            document.getElementById('search-input').value = '';
+            
+            displayUniversities(universities);
+        }
+    </script>
+</body>
+</html>
