@@ -236,7 +236,7 @@
       
         /* Герой секция */
         .hero {
-            background: linear-gradient(rgba(12, 27, 44, 0.85), rgba(30, 66, 50, 0.8)), url('/images/фон.jpg');
+            background: linear-gradient(rgba(12, 27, 44, 0.85), rgba(30, 66, 50, 0.8)), url('./images/фон.jpg');
             background-size: cover;
             background-position: center;
             color: var(--white);
