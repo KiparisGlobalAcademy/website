@@ -409,62 +409,56 @@
         </div>
     </section>
 
-    <!-- Контакты -->
-    <section class="contacts" id="contacts">
-        <div class="container">
-            <div class="section-title">
-                <h2>Контакты</h2>
-                <p>Свяжитесь с нами для консультации</p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-info fade-in">
-                    <h3>Наши контакты</h3>
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <p><strong>Адрес:</strong> г. Астана, ул. Образцова, д. 25</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div>
-                            <p><strong>Телефон:</strong> +821029121007</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
-                        <div>
-                            <p><strong>Email:</strong> info@kiparis-academy.ru</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">🕒</div>
-                        <div>
-                            <p><strong>Время работы:</strong> Пн-Пт: 9:00-18:00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form fade-in">
-                    <h3>Напишите нам</h3>
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Ваше имя">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Ваш email">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Тема">
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="5" placeholder="Сообщение"></textarea>
-                        </div>
-                        <button type="submit" class="btn">Отправить сообщение</button>
-                    </form>
-                </div>
-            </div>
+   <!-- Контакты -->
+<section class="contacts" id="contacts">
+  <div class="container">
+    <div class="section-title">
+      <h2>Контакты</h2>
+      <p>Свяжитесь с нами для консультации</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info fade-in">
+        <h3>Наши контакты</h3>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div><p><strong>Адрес:</strong> 충남 아산시 용화동 1527</p></div>
         </div>
-    </section>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div><p><strong>Телефон:</strong> +82 10-2912-1007</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div><p><strong>Email:</strong> globalacademykiparis@gmail.com</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕒</div>
+          <div><p><strong>Время работы:</strong> Пн-Пт: 9:00 – 18:00</p></div>
+        </div>
+      </div>
+
+      <div class="contact-form fade-in">
+        <h3>Напишите нам</h3>
+        <form id="contactForm">
+          <div class="form-group">
+            <input type="text" id="contactName" class="form-control" placeholder="Ваше имя" required>
+          </div>
+          <div class="form-group">
+            <input type="email" id="contactEmail" class="form-control" placeholder="Ваш email" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="contactSubject" class="form-control" placeholder="Тема" required>
+          </div>
+          <div class="form-group">
+            <textarea id="contactMessage" class="form-control" rows="5" placeholder="Сообщение" required></textarea>
+          </div>
+          <button type="submit" class="btn">Отправить сообщение</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
        <!-- Футер -->
     <footer>
         <div class="container">
@@ -502,8 +496,8 @@
                     <h3>Контакты</h3>
                     <ul>
                         <li>📞 +821029121007</li>
-                        <li>✉️ info@kiparis-academy.ru</li>
-                        <li>📍 г. Астана, ул. Образцова, д. 25</li>
+                        <li>✉️ globalacademykiparis@gmail.com</li>
+                        <li>📍 충남 아산시 용화동 1527</li>
                     </ul>
                 </div>
             </div>
@@ -514,6 +508,37 @@
     </footer>
 
     <script>
+        document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("contactName").value;
+  const email = document.getElementById("contactEmail").value;
+  const subject = document.getElementById("contactSubject").value;
+  const message = document.getElementById("contactMessage").value;
+
+  const text = `💬 Хочу получить консультацию:%0A%0A👤 Имя: ${name}%0A📧 Email: ${email}%0A📝 Тема: ${subject}%0A💭 Сообщение: ${message}`;
+  
+  // Номер в международном формате без "+"
+  const whatsappURL = `https://wa.me/821029121007?text=${text}`;
+  
+  alert("Открывается WhatsApp...");
+  window.open(whatsappURL, "_blank");
+});
+
+        document.getElementById("application-form").addEventListener("submit", function(e) {
+  e.preventDefault(); // не отправляем форму
+  const firstName = document.getElementById("firstName").value;
+  const lastName = document.getElementById("lastName").value;
+  const phone = document.getElementById("phone").value;
+  const country = document.getElementById("country").value;
+  const education = document.getElementById("educationLevel").value;
+  const message = document.getElementById("message").value;
+
+  const text = `Новая заявка на обучение:%0A%0A👤 Имя: ${firstName} ${lastName}%0A📞 Телефон: ${phone}%0A🌍 Страна обучения: ${country}%0A🎓 Уровень: ${education}%0A💬 Сообщение: ${message}`;
+
+  const whatsappURL = `https://wa.me/821029121007?text=${text}`;
+  window.open(whatsappURL, "_blank");
+});
           // JavaScript для мобильного меню
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenu = document.querySelector('.mobile-menu');
