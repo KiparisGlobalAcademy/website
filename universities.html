@@ -620,7 +620,7 @@
     </style>
 </head>
 <body>
-    <!-- Шапка -->
+      <!-- Шапка -->
     <header>
         <div class="container header-container">
             <a href="index.html" class="logo">Kiparis<span>Global</span></a>
@@ -631,20 +631,24 @@
                     <li class="dropdown">
                         <a href="./universities.html">Университеты</a>
                         <div class="dropdown-menu">
-                            <a href="./south-korea.html" class="country-item">
-                                <div class="country-flag" style="background-color: #0047A0;"></div>
+                            <a href="./south-korea.html" class="country-items">
+                                <div class="country-flags" style="background-color: #0047A0;"></div>
                                 <span class="country-name">Южная Корея</span>
                             </a>
-                            <a href="./china.html" class="country-item">
-                                <div class="country-flag" style="background-color: #DE2910;"></div>
+                            <a href="./china.html" class="country-items">
+                                <div class="country-flags" style="background-color: #DE2910;"></div>
                                 <span class="country-name">Китай</span>
                             </a>
-                            <a href="./spain.html" class="country-item">
-                                <div class="country-flag" style="background-color: #C60B1E;"></div>
+                            <a href="./italy.html" class="country-items">
+                                <div class="country-flags" style="background-color: #c69d0b;"></div>
+                                <span class="country-name">Италия</span>
+                            </a>
+                            <a href="./spain.html" class="country-items">
+                                <div class="country-flags" style="background-color: #C60B1E;"></div>
                                 <span class="country-name">Испания</span>
                             </a>
-                            <a href="./czech.html" class="country-item">
-                                <div class="country-flag" style="background-color: #D7141A;"></div>
+                            <a href="./czech.html" class="country-items">
+                                <div class="country-flags" style="background-color: #D7141A;"></div>
                                 <span class="country-name">Чехия</span>
                             </a>
                         </div>
@@ -656,6 +660,7 @@
             <div class="mobile-menu">☰</div>
         </div>
     </header>
+
 
     <!-- Хлебные крошки -->
     <section class="breadcrumb">
@@ -671,7 +676,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Все университеты</h2>
-                <p>Выбирайте из лучших университетов Южной Кореи, Китая, Испании и Чехии</p>
+<p>Выбирайте из лучших университетов Южной Кореи, Китая, Италии, Испании и Чехии</p>
             </div>
             
             <!-- Фильтры -->
@@ -683,6 +688,7 @@
                             <option value="all">Все страны</option>
                             <option value="korea">Южная Корея</option>
                             <option value="china">Китай</option>
+                            <option value="italy">Италия</option>
                             <option value="spain">Испания</option>
                             <option value="czech">Чехия</option>
                         </select>
@@ -718,7 +724,7 @@
             
             <!-- Счетчик результатов -->
             <div class="results-count">
-                Найдено университетов: <span id="results-count">32</span>
+                Найдено университетов: <span id="results-count">0</span>
             </div>
             
             <!-- Сетка университетов -->
@@ -756,6 +762,7 @@
                     <ul>
                         <li><a href="south-korea.html">Южная Корея</a></li>
                         <li><a href="china.html">Китай</a></li>
+                        <li><a href="italy.html">Италия</a></li>
                         <li><a href="spain.html">Испания</a></li>
                         <li><a href="czech.html">Чехия</a></li>
                     </ul>
@@ -1045,24 +1052,87 @@
                 price: 5000,
                 rank: "Топ-6 в Чехии",
                 image: "https://vtgstudy.com/wp-content/uploads/2017/09/Postuplenie-v-Anglo-Amerikanskij-Institut1-600x315.jpg"
-            }
+            }, 
+            // Италия
+           {
+            id: 27,
+            name: "Sapienza University of Rome",
+            country: "italy",
+            city: "Рим",
+            description: "Один из крупнейших университетов Европы, основанный в 1303 году. Сильные программы в области гуманитарных, инженерных и медицинских наук.",
+            price: 2500,
+            rank: "Топ-1 в Италии",
+            image: "https://smapse.ru/storage/2018/09/sapienza-universita-roma.jpg"
+        },
+        {
+            id: 28,
+            name: "University of Bologna",
+            country: "italy",
+            city: "Болонья",
+            description: "Старейший университет в мире, основанный в 1088 году. Центр академических инноваций и международных программ.",
+            price: 3200,
+            rank: "Топ-2 в Италии",
+            image: "https://uceap.universityofcalifornia.edu/sites/default/files/marketing-images/program-page-images/university-of-bologna-glance.jpg"
+        },
+        {
+            id: 29,
+            name: "University of Pisa",
+            country: "italy",
+            city: "Пиза",
+            description: "Престижный университет с сильными научными программами и международным сотрудничеством.",
+            price: 2000,
+            rank: "Топ-3 в Италии",
+            image: "https://apply-italy.com/_next/image?url=https%3A%2F%2Fapi.apply-italy.com%2Fmedia%2Funiversities%2FUnivesity_of_Pisa.webp&w=2048&q=100"
+        },
+        {
+            id: 30,
+            name: "Ca' Foscari University of Venice",
+            country: "italy",
+            city: "Венеция",
+            description: "Известен своими программами на английском языке, исследованиями и уникальным расположением в Венеции.",
+            price: 4000,
+            rank: "Топ-4 в Италии",
+            image: "https://mediaim.expedia.com/destination/9/7a14b72fc04ef79cd56e063aef9c8bca.jpg"
+        },
+        {
+            id: 31,
+            name: "Università degli Studi di Milano",
+            country: "italy",
+            city: "Милан",
+            description: "Крупнейший исследовательский университет Италии, предлагающий широкий спектр направлений обучения.",
+            price: 3800,
+            rank: "Топ-5 в Италии",
+            image: "https://www.pravos.unios.hr/diginlaw/wp-content/uploads/2021/04/02.-faculty-photo-1-1.jpg?w=775"
+        },
+        {
+            id: 32,
+            name: "University of Siena",
+            country: "italy",
+            city: "Сиена",
+            description: "Исторический университет Тосканы, сочетающий традиции и современные подходы в образовании.",
+            price: 1800,
+            rank: "Топ-6 в Италии",
+            image: "https://globaladmissionsv2.s3.amazonaws.com/media/school_pictures/2_1_86Xk4Xu.jpg"
+        }
         ];
 
-        // Названия стран для отображения
-        const countryNames = {
-            'korea': 'Южная Корея',
-            'china': 'Китай',
-            'spain': 'Испания',
-            'czech': 'Чехия'
-        };
+        // Названия стран
+    const countryNames = {
+        'korea': 'Южная Корея',
+        'china': 'Китай',
+        'spain': 'Испания',
+        'czech': 'Чехия',
+        'italy': 'Италия'
+    };
 
-        // Цвета флагов для каждой страны
-        const countryColors = {
-            'korea': '#0047A0',
-            'china': '#DE2910',
-            'spain': '#C60B1E',
-            'czech': '#D7141A'
-        };
+    // Цвета флагов
+    const countryColors = {
+        'korea': '#0047A0',
+        'china': '#DE2910',
+        'spain': '#C60B1E',
+        'czech': '#D7141A',
+        'italy': '#008C45'
+    };
 
         // Инициализация при загрузке страницы
         document.addEventListener('DOMContentLoaded', function() {
