@@ -767,3 +767,29 @@
                 padding: 30px;
             }
         }
+
+
+
+
+ .social-links {
+    margin-top: 20px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ccc;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+    padding: 5px 0;
+}
+
+.social-link:hover {
+    color: var(--gold);
+}
+
+.social-link svg {
+    flex-shrink: 0;
+}
