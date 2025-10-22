@@ -5,7 +5,158 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Обучение в Италии - Kiparis Global Academy</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
+    <style>/* Стили для модальных окон */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(12, 27, 44, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 700px;
+            box-shadow: 0 20px 50px rgba(12, 27, 44, 0.3);
+            animation: slideIn 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--dark-green), var(--light-green));
+            color: var(--white);
+            padding: 25px 30px;
+            position: relative;
+        }
+
+        .modal-header h3 {
+            color: var(--white);
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .modal-rank {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gold);
+            color: var(--dark-blue);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--white);
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: rgba(255,255,255,0.2);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 30px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .university-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-label {
+            font-size: 0.9rem;
+            color: var(--dark-blue);
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            color: var(--dark-green);
+            font-size: 1.1rem;
+        }
+
+        .modal-description {
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .modal-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: var(--light-bg);
+            border-radius: 6px;
+        }
+
+        .feature-icon {
+            color: var(--light-green);
+            font-size: 1.2rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .modal-actions .btn {
+            flex: 1;
+            min-width: 150px;
+        }
+
+
         .social-links {
             margin-top: 20px;
         }
@@ -758,6 +909,7 @@
         </div>
     </section>
 
+ 
     <!-- Университеты Италии -->
     <section class="universities">
         <div class="container">
@@ -773,7 +925,7 @@
             </div>
             <div class="universities-grid">
                 <!-- Università degli Studi di Milano -->
-                <div class="university-card fade-in">
+                <div class="university-card fade-in" data-category="milan research">
                     <div class="university-image">
                         <img src="https://www.pravos.unios.hr/diginlaw/wp-content/uploads/2021/04/02.-faculty-photo-1-1.jpg?w=775" alt="Университет Милана">
                     </div>
@@ -784,13 +936,12 @@
                             <span>📍 Милан</span>
                             <span>💰 €800 - €4,000/год</span>
                         </div>
-                
-                        <a href="https://www.unimi.it" class="btn">Подробнее</a>
+                        <button class="btn open-modal" data-modal="modal-milano">Подробнее</button>
                     </div>
                 </div>
                 
                 <!-- University of Bologna -->
-                <div class="university-card fade-in">
+                <div class="university-card fade-in" data-category="research">
                     <div class="university-image">
                         <img src="https://uceap.universityofcalifornia.edu/sites/default/files/marketing-images/program-page-images/university-of-bologna-glance.jpg" alt="Университет Болоньи">
                     </div>
@@ -801,13 +952,12 @@
                             <span>📍 Болонья</span>
                             <span>💰 €3,217/год</span>
                         </div>
-                      
-                        <a href="https://www.unibo.it" class="btn">Подробнее</a>
+                        <button class="btn open-modal" data-modal="modal-bologna">Подробнее</button>
                     </div>
                 </div>
                 
                 <!-- University of Siena -->
-                <div class="university-card fade-in">
+                <div class="university-card fade-in" data-category="research">
                     <div class="university-image">
                         <img src="https://globaladmissionsv2.s3.amazonaws.com/media/school_pictures/2_1_86Xk4Xu.jpg" alt="Университет Сиены">
                     </div>
@@ -818,13 +968,12 @@
                             <span>📍 Сиена</span>
                             <span>💰 €600 - €2,300/год</span>
                         </div>
-                        
-                        <a href="https://www.unisi.it" class="btn">Подробнее</a>
+                        <button class="btn open-modal" data-modal="modal-siena">Подробнее</button>
                     </div>
                 </div>
                 
                 <!-- Sapienza University of Rome -->
-                <div class="university-card fade-in">
+                <div class="university-card fade-in" data-category="rome research">
                     <div class="university-image">
                         <img src="https://smapse.ru/storage/2018/09/sapienza-universita-roma.jpg" alt="Университет Сапиенца">
                     </div>
@@ -835,13 +984,12 @@
                             <span>📍 Рим</span>
                             <span>💰 €1,000 - €3,000/год</span>
                         </div>
-                       
-                        <a href="https://www.uniroma1.it" class="btn">Подробнее</a>
+                        <button class="btn open-modal" data-modal="modal-sapienza">Подробнее</button>
                     </div>
                 </div>
                 
                 <!-- Ca' Foscari University of Venice -->
-                <div class="university-card fade-in">
+                <div class="university-card fade-in" data-category="research">
                     <div class="university-image">
                         <img src="https://mediaim.expedia.com/destination/9/7a14b72fc04ef79cd56e063aef9c8bca.jpg" alt="Университет Ка' Фоскари">
                     </div>
@@ -852,13 +1000,12 @@
                             <span>📍 Венеция</span>
                             <span>💰 €1,200 - €8,000/год</span>
                         </div>
-                      
-                        <a href="https://www.unive.it" class="btn">Подробнее</a>
+                        <button class="btn open-modal" data-modal="modal-cafoscari">Подробнее</button>
                     </div>
                 </div>
                 
                 <!-- Link Campus University -->
-                <div class="university-card fade-in">
+                <div class="university-card fade-in" data-category="rome">
                     <div class="university-image">
                         <img src="https://santvalentin.com.ua/sites/default/files/photo-blog-news/link_c.jpg" alt="Линк Кампус Университет">
                     </div>
@@ -869,13 +1016,12 @@
                             <span>📍 Рим</span>
                             <span>💰 €9,500/год</span>
                         </div>
-                       
-                        <a href="https://www.unilink.it" class="btn">Подробнее</a>
+                        <button class="btn open-modal" data-modal="modal-link">Подробнее</button>
                     </div>
                 </div>
                 
                 <!-- University of Pisa -->
-                <div class="university-card fade-in">
+                <div class="university-card fade-in" data-category="research">
                     <div class="university-image">
                         <img src="https://apply-italy.com/_next/image?url=https%3A%2F%2Fapi.apply-italy.com%2Fmedia%2Funiversities%2FUnivesity_of_Pisa.webp&w=2048&q=100" alt="Университет Пизы">
                     </div>
@@ -886,13 +1032,413 @@
                             <span>📍 Пиза</span>
                             <span>💰 €1,000 - €3,000/год</span>
                         </div>
-                       
-                        <a href="https://www.unipi.it" class="btn">Подробнее</a>
+                        <button class="btn open-modal" data-modal="modal-pisa">Подробнее</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Модальные окна для университетов Италии -->
+    <!-- University of Milan -->
+    <div id="modal-milano" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Università degli Studi di Milano</h3>
+                <div class="modal-rank">Топ-1 в Италии</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="university-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Город</span>
+                        <span class="detail-value">Милан</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💰 Стоимость</span>
+                        <span class="detail-value">€800 - €4,000/год</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🎓 Тип</span>
+                        <span class="detail-value">Государственный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">👨‍🎓 Студентов</span>
+                        <span class="detail-value">~60,000</span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p>Университет Милана - один из крупнейших и наиболее исследовательски активных университетов Италии, основанный в 1924 году. Университет предлагает полный спектр дисциплин от гуманитарных до естественных наук.</p>
+                    <p>Расположенный в финансовой столице Италии, университет имеет тесные связи с промышленностью и бизнесом. Особенно сильны программы в области медицины, права, экономики и политических наук.</p>
+                </div>
+                <div class="modal-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">🏛️</span>
+                        <span>8 факультетов</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🔬</span>
+                        <span>Исследовательские центры</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🌍</span>
+                        <span>Международные программы</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">💼</span>
+                        <span>Связи с бизнесом</span>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <a href="https://www.unimi.it" class="btn" target="_blank">Официальный сайт</a>
+                    <a href="./index.html#application" class="btn btn-gold">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- University of Bologna -->
+    <div id="modal-bologna" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>University of Bologna</h3>
+                <div class="modal-rank">Старейший в Европе</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="university-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Город</span>
+                        <span class="detail-value">Болонья</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💰 Стоимость</span>
+                        <span class="detail-value">€3,217/год</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🎓 Тип</span>
+                        <span class="detail-value">Государственный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">👨‍🎓 Студентов</span>
+                        <span class="detail-value">~85,000</span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p>Болонский университет - старейший непрерывно действующий университет в мире, основанный в 1088 году. Именно здесь зародилась Болонская система образования, ставшая основой для европейского высшего образования.</p>
+                    <p>Университет имеет 11 школ и предлагает более 200 программ на всех уровнях образования. Особенно известен своими программами в области права, медицины и гуманитарных наук.</p>
+                </div>
+                <div class="modal-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">📜</span>
+                        <span>Основан в 1088 году</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">⚖️</span>
+                        <span>Сильный юридический</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🌍</span>
+                        <span>Международная репутация</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🏛️</span>
+                        <span>11 школ</span>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <a href="https://www.unibo.it" class="btn" target="_blank">Официальный сайт</a>
+                    <a href="./index.html#application" class="btn btn-gold">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- University of Siena -->
+    <div id="modal-siena" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>University of Siena</h3>
+                <div class="modal-rank">Основан в 1240 году</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="university-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Город</span>
+                        <span class="detail-value">Сиена</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💰 Стоимость</span>
+                        <span class="detail-value">€600 - €2,300/год</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🎓 Тип</span>
+                        <span class="detail-value">Государственный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">👨‍🎓 Студентов</span>
+                        <span class="detail-value">~20,000</span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p>Университет Сиены, основанный в 1240 году, является одним из старейших университетов Италии. Расположенный в историческом городе Тосканы, университет сочетает богатые академические традиции с современными образовательными подходами.</p>
+                    <p>Университет особенно силен в области медицины, права, экономики и гуманитарных наук. Небольшой размер города создает уникальную атмосферу для студентов, способствуя тесному взаимодействию между студентами и преподавателями.</p>
+                </div>
+                <div class="modal-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">🏥</span>
+                        <span>Сильная медицина</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🎨</span>
+                        <span>Тосканская культура</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📚</span>
+                        <span>Исторический кампус</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🤝</span>
+                        <span>Тесное сообщество</span>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <a href="https://www.unisi.it" class="btn" target="_blank">Официальный сайт</a>
+                    <a href="./index.html#application" class="btn btn-gold">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sapienza University of Rome -->
+    <div id="modal-sapienza" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Sapienza University of Rome</h3>
+                <div class="modal-rank">Крупнейший в Европе</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="university-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Город</span>
+                        <span class="detail-value">Рим</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💰 Стоимость</span>
+                        <span class="detail-value">€1,000 - €3,000/год</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🎓 Тип</span>
+                        <span class="detail-value">Государственный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">👨‍🎓 Студентов</span>
+                        <span class="detail-value">~115,000</span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p>Сапиенца - крупнейший университет Европы и один из старейших в мире, основанный в 1303 году папой Бонифацием VIII. Университет расположен в самом сердце Рима и предлагает невероятное разнообразие академических программ.</p>
+                    <p>С 11 факультетами и 63 департаментами, Сапиенца охватывает практически все области знаний. Университет особенно известен своими программами в области классических исследований, археологии, архитектуры и инженерии.</p>
+                </div>
+                <div class="modal-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">🏛️</span>
+                        <span>11 факультетов</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🏺</span>
+                        <span>Классические науки</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🌍</span>
+                        <span>Международные обмены</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">💡</span>
+                        <span>Исследования</span>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <a href="https://www.uniroma1.it" class="btn" target="_blank">Официальный сайт</a>
+                    <a href="./index.html#application" class="btn btn-gold">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ca' Foscari University of Venice -->
+    <div id="modal-cafoscari" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Ca' Foscari University of Venice</h3>
+                <div class="modal-rank">Основан в 1868 году</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="university-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Город</span>
+                        <span class="detail-value">Венеция</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💰 Стоимость</span>
+                        <span class="detail-value">€1,200 - €8,000/год</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🎓 Тип</span>
+                        <span class="detail-value">Государственный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">👨‍🎓 Студентов</span>
+                        <span class="detail-value">~21,000</span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p>Университет Ка' Фоскари, основанный в 1868 году как первая в Италии школа коммерции, сегодня является одним из ведущих университетов в области экономики, языков и культурологии. Расположенный в уникальном городе на воде, университет предлагает незабываемый опыт обучения.</p>
+                    <p>Университет особенно силен в области международных отношений, экономики, иностранных языков и культурного наследия. Многие программы предлагаются на английском языке, что привлекает студентов со всего мира.</p>
+                </div>
+                <div class="modal-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">💼</span>
+                        <span>Экономика и бизнес</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🌐</span>
+                        <span>Иностранные языки</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🏛️</span>
+                        <span>Культурное наследие</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🚤</span>
+                        <span>Уникальное расположение</span>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <a href="https://www.unive.it" class="btn" target="_blank">Официальный сайт</a>
+                    <a href="./index.html#application" class="btn btn-gold">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link Campus University -->
+    <div id="modal-link" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Link Campus University</h3>
+                <div class="modal-rank">Международный подход</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="university-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Город</span>
+                        <span class="detail-value">Рим</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💰 Стоимость</span>
+                        <span class="detail-value">€9,500/год</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🎓 Тип</span>
+                        <span class="detail-value">Частный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">👨‍🎓 Студентов</span>
+                        <span class="detail-value">~2,500</span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p>Link Campus University - частный международный университет, основанный в 1999 году. Университет ориентирован на междисциплинарный подход и предлагает программы на английском и итальянском языках.</p>
+                    <p>Особенностью университета является тесное сотрудничество с промышленностью и бизнесом, а также акцент на практические навыки и международные перспективы. Университет предлагает современные программы в области бизнеса, коммуникаций, цифровых технологий и международных отношений.</p>
+                </div>
+                <div class="modal-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">🌍</span>
+                        <span>Английские программы</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">💼</span>
+                        <span>Практическая ориентация</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🤝</span>
+                        <span>Партнерства с бизнесом</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🚀</span>
+                        <span>Современные программы</span>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <a href="https://www.unilink.it" class="btn" target="_blank">Официальный сайт</a>
+                    <a href="./index.html#application" class="btn btn-gold">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- University of Pisa -->
+    <div id="modal-pisa" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>University of Pisa</h3>
+                <div class="modal-rank">Основан в 1343 году</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="university-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Город</span>
+                        <span class="detail-value">Пиза</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💰 Стоимость</span>
+                        <span class="detail-value">€1,000 - €3,000/год</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🎓 Тип</span>
+                        <span class="detail-value">Государственный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">👨‍🎓 Студентов</span>
+                        <span class="detail-value">~50,000</span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p>Университет Пизы, основанный в 1343 году, является одним из старейших и наиболее престижных университетов Италии. Университет имеет богатую историю научных достижений и известен своими исследованиями в различных областях.</p>
+                    <p>Особенно сильны программы в области физики, информатики, инженерии и медицины. Университет входит в систему Пизанской высшей нормальной школы, что делает его привлекательным для талантливых студентов и исследователей.</p>
+                </div>
+                <div class="modal-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">🔬</span>
+                        <span>Научные исследования</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">💻</span>
+                        <span>Информатика</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">⚕️</span>
+                        <span>Медицина</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🎓</span>
+                        <span>Престижная система</span>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <a href="https://www.unipi.it" class="btn" target="_blank">Официальный сайт</a>
+                    <a href="./index.html#application" class="btn btn-gold">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Культура Италии -->
     <section class="culture">
@@ -1104,6 +1650,104 @@
     </footer>
 
     <script>
+
+         // JavaScript для модальных окон
+        document.addEventListener('DOMContentLoaded', function() {
+            // Открытие модального окна
+            const openModalButtons = document.querySelectorAll('.open-modal');
+            const modals = document.querySelectorAll('.modal');
+            const closeModalButtons = document.querySelectorAll('.close-modal');
+            
+            openModalButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modalId = this.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.style.display = 'block';
+                        document.body.style.overflow = 'hidden'; // Запрещаем скролл страницы
+                    }
+                });
+            });
+            
+            // Закрытие модального окна
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Возвращаем скролл
+                });
+            });
+            
+            // Закрытие при клике вне модального окна
+            window.addEventListener('click', function(event) {
+                modals.forEach(modal => {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+            
+            // Закрытие по клавише Escape
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    modals.forEach(modal => {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    });
+                }
+            });
+            
+            // Остальной JavaScript код остается без изменений
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const nav = document.querySelector('nav ul');
+            
+            mobileMenu.addEventListener('click', function() {
+                nav.classList.toggle('show');
+            });
+            
+            // Табы для университетов
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const universityCards = document.querySelectorAll('.university-card');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Удаляем активный класс у всех кнопок
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    // Добавляем активный класс текущей кнопке
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-tab');
+                    
+                    universityCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category').includes(category)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Анимация появления элементов при скролле
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('fade-in');
+                    }
+                });
+            };
+            
+            // Запускаем при загрузке и при скролле
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll();
+        });
+        
         // JavaScript для интерактивных элементов
         document.addEventListener('DOMContentLoaded', function() {
             // Мобильное меню
