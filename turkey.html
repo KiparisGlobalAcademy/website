@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обучение в Турции - Kiparis Global Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Стили для модальных окон */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(12, 27, 44, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 700px;
+            box-shadow: 0 20px 50px rgba(12, 27, 44, 0.3);
+            animation: slideIn 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--dark-green), var(--light-green));
+            color: var(--white);
+            padding: 25px 30px;
+            position: relative;
+        }
+
+        .modal-header h3 {
+            color: var(--white);
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .modal-rank {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gold);
+            color: var(--dark-blue);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--white);
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: rgba(255,255,255,0.2);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 30px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .university-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-label {
+            font-size: 0.9rem;
+            color: var(--dark-blue);
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            color: var(--dark-green);
+            font-size: 1.1rem;
+        }
+
+        .modal-description {
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .modal-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: var(--light-bg);
+            border-radius: 6px;
+        }
+
+        .feature-icon {
+            color: var(--light-green);
+            font-size: 1.2rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .modal-actions .btn {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--gold);
+        }
+
+        .social-link svg {
+            flex-shrink: 0;
+        }
+
+        /* Цветовая палитра */
+        :root {
+            --dark-green: #1E4232;    /* Глубокий кипарисовый зелёный */
+            --light-green: #3F6E4C;   /* Мягкий природный зелёный */
+            --dark-blue: #0C1B2C;     /* Тёмно-синий / почти чёрный */
+            --white: #FFFFFF;         /* Белый */
+            --gold: #B69B64;          /* Золотисто-бежевый */
+            --light-bg: #F8F9FA;      /* Светлый фон для секций */
+        }
+        
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark-blue);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--dark-green);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--light-green);
+            color: var(--white);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(30, 66, 50, 0.2);
+        }
+        
+        .btn-gold {
+            background: var(--gold);
+            color: var(--dark-blue);
+        }
+        
+        .btn-gold:hover {
+            background: #a08654;
+            color: var(--white);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            margin: 15px auto;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--dark-blue);
+            font-size: 1.1rem;
+        }
+
+        /* Шапка */
+        header {
+            background: var(--dark-blue);
+            box-shadow: 0 2px 15px rgba(12, 27, 44, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .logo span {
+            color: var(--gold);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 10px 0;
+            display: block;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        /* Выпадающее меню для Университетов */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 280px;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(12, 27, 44, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            padding: 20px 0;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu:before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 30px;
+            width: 16px;
+            height: 16px;
+            background: var(--white);
+            transform: rotate(45deg);
+        }
+        
+        .country-items {
+            display: flex;
+            align-items: center;
+            padding: 12px 25px;
+            text-decoration: none;
+            color: var(--dark-blue);
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .country-items:hover {
+            background: var(--light-bg);
+            border-left: 3px solid var(--light-green);
+            padding-left: 30px;
+        }
+        
+        .country-flags {
+            width: 30px;
+            height: 20px;
+            border-radius: 2px;
+            margin-right: 15px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .country-name {
+            font-weight: 500;
+            color: var(--dark-blue);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--white);
+        }
+
+        /* Герой секция Турция */
+        .turkey-hero {
+            background: linear-gradient(rgba(227, 10, 23, 0.8), rgba(12, 27, 44, 0.7)), url('https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .turkey-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .turkey-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-weight: 300;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+        }
+        
+        /* Университеты Турции */
+        .universities {
+            background: var(--white);
+        }
+        
+        .universities-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tab-btn {
+            background: var(--white);
+            border: 2px solid var(--light-green);
+            color: var(--light-green);
+            padding: 10px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--light-green);
+            color: var(--white);
+        }
+        
+        .universities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .university-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(12, 27, 44, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .university-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(12, 27, 44, 0.15);
+        }
+        
+        .university-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .university-rank {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gold);
+            color: var(--dark-blue);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .university-info {
+            padding: 25px;
+        }
+        
+        .university-info h3 {
+            margin-bottom: 10px;
+            color: var(--dark-green);
+        }
+        
+        .university-info p {
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+            font-size: 0.95rem;
+        }
+        
+        .university-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--dark-blue);
+        }
+        
+        /* Культура Турции */
+        .culture {
+            background: var(--light-bg);
+        }
+        
+        .culture-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .culture-text {
+            flex: 1;
+        }
+        
+        .culture-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .culture-text p {
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+        }
+        
+        .culture-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .culture-feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .culture-icon {
+            font-size: 1.5rem;
+            color: #E30A17;
+        }
+        
+        .culture-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(227, 10, 23, 0.1);
+            position: relative;
+        }
+        
+        .culture-image:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            z-index: -1;
+        }
+        
+        .culture-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+       
+        /* Процесс поступления */
+        .admission-process {
+            background: var(--light-bg);
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 50px;
+        }
+        
+        .process-steps:before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #E30A17;
+            z-index: 1;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: #E30A17;
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            border: 5px solid var(--white);
+        }
+        
+        .step-content h3 {
+            margin-bottom: 10px;
+            color: var(--dark-green);
+        }
+        
+        .step-content p {
+            color: var(--dark-blue);
+            font-size: 0.95rem;
+        }
+        
+        /* Другие страны */
+        .other-countries {
+            background: var(--white);
+        }
+        
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .country-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(12, 27, 44, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .country-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(12, 27, 44, 0.15);
+        }
+        
+        .country-flag {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .country-info {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .country-info h3 {
+            margin-bottom: 10px;
+            color: var(--dark-green);
+        }
+        
+        .country-info p {
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+        }
+        
+        /* CTA секция */
+        .cta-section {
+            background: linear-gradient(rgba(227, 10, 23, 0.9), rgba(12, 27, 44, 0.9)), url('https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Футер */
+        footer {
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 70px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+        
+        .footer-col p {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--gold);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .culture-content, .process-steps {
+                flex-direction: column;
+            }
+            
+            .turkey-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .process-steps:before {
+                display: none;
+            }
+            
+            .process-step {
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--dark-blue);
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(12, 27, 44, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Kiparis<span>Global</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li class="dropdown">
+                        <a href="./universities.html">Университеты</a>
+                        <div class="dropdown-menu">
+                            <a href="./south-korea.html" class="country-items">
+                                <div class="country-flags" style="background-color: #0047A0;"></div>
+                                <span class="country-name">Южная Корея</span>
+                            </a>
+                            <a href="./china.html" class="country-items">
+                                <div class="country-flags" style="background-color: #DE2910;"></div>
+                                <span class="country-name">Китай</span>
+                            </a>
+                            <a href="./italy.html" class="country-items">
+                                <div class="country-flags" style="background-color: #c69d0b;"></div>
+                                <span class="country-name">Италия</span>
+                            </a>
+                            <a href="./spain.html" class="country-items">
+                                <div class="country-flags" style="background-color: #C60B1E;"></div>
+                                <span class="country-name">Испания</span>
+                            </a>
+                            <a href="./czech.html" class="country-items">
+                                <div class="country-flags" style="background-color: #D7141A;"></div>
+                                <span class="country-name">Чехия</span>
+                            </a>
+                            <a href="./turkey.html" class="country-items">
+                                <div class="country-flags" style="background-color: #E30A17;"></div>
+                                <span class="country-name">Турция</span>
+                            </a>
+                        </div>
+                    </li>
+                   <li><a href="./index.html#application">Анкета</a></li>
+                    <li><a href="./index.html#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">☰</div>
+        </div>
+    </header>
+
+    <!-- Герой секция Турция -->
+    <section class="turkey-hero">
+        <div class="container">
+            <h1 class="fade-in">Обучение в Турции</h1>
+            <p class="fade-in">Европейское качество образования по доступным ценам в стране, где встречаются Восток и Запад</p>
+            <a href="./index.html#application" class="btn btn-gold fade-in">Подать заявку</a>
+        </div>
+    </section>
+
+   <!-- Обновите секцию университетов Турции следующим кодом: -->
+    <section class="universities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Лучшие университеты Турции</h2>
+                <p>Топовые вузы с международным признанием и доступной стоимостью</p>
+            </div>
+            <div class="universities-tabs">
+                <button class="tab-btn active" data-tab="all">Все</button>
+                <button class="tab-btn" data-tab="istanbul">Стамбул</button>
+                <button class="tab-btn" data-tab="ankara">Анкара</button>
+                <button class="tab-btn" data-tab="research">Исследовательские</button>
+                <button class="tab-btn" data-tab="private">Частные</button>
+            </div>
+            <div class="universities-grid">
+                <!-- Bogazici University -->
+                <div class="university-card fade-in" data-category="istanbul research">
+                    <div class="university-image" style="background-color: #e9ecef;">
+                        <img src="https://mediastore.cc.bogazici.edu.tr/web/upload/haberler/resized_0aacf-bcbba017bogaziciuniversitesindeonceokulonundesonrahaftaboyuonlinedersteeylem_0_0_2.jpg" alt="Bogazici University" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div class="university-rank">Топ-1 в Турции</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Bogazici University</h3>
+                        <p>Ведущий государственный университет Турции, расположенный в Стамбуле с сильными программами на английском языке.</p>
+                        <div class="university-meta">
+                            <span>📍 Стамбул</span>
+                            <span>💰 от $1,500/год</span>
+                        </div>
+                        <button class="btn open-modal" data-modal="modal-bogazici">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Middle East Technical University -->
+                <div class="university-card fade-in" data-category="ankara research">
+                    <div class="university-image" style="background-color: #e9ecef;">
+                        <img src="https://safatr.com/wp-content/uploads/2024/11/meyu.webp" alt="Middle East Technical University" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div class="university-rank">Топ-2 в Турции</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Middle East Technical University</h3>
+                        <p>Лучший технический университет Турции с кампусом в Анкаре и программами на английском языке.</p>
+                        <div class="university-meta">
+                            <span>📍 Анкара</span>
+                            <span>💰 от $1,800/год</span>
+                        </div>
+                        <button class="btn open-modal" data-modal="modal-metu">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Istanbul Technical University -->
+                <div class="university-card fade-in" data-category="istanbul research">
+                    <div class="university-image" style="background-color: #e9ecef;">
+                        <img src="https://avatars.mds.yandex.net/i?id=d736880d5fce9582506406f36b71b2868382ece4-4034409-images-thumbs&n=13" alt="Istanbul Technical University" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div class="university-rank">Топ-3 в Турции</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Istanbul Technical University</h3>
+                        <p>Старейший технический университет Турции, основанный в 1773 году с сильными инженерными программами.</p>
+                        <div class="university-meta">
+                            <span>📍 Стамбул</span>
+                            <span>💰 от $1,200/год</span>
+                        </div>
+                        <button class="btn open-modal" data-modal="modal-itu">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Istanbul University -->
+                <div class="university-card fade-in" data-category="istanbul research">
+                    <div class="university-image" style="background-color: #e9ecef;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Istanbul_University.png" alt="Istanbul University" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div class="university-rank">Топ-4 в Турции</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Istanbul University</h3>
+                        <p>Один из старейших и крупнейших университетов Турции, основанный в 1453 году.</p>
+                        <div class="university-meta">
+                            <span>📍 Стамбул</span>
+                            <span>💰 от $4,000/год</span>
+                        </div>
+                        <button class="btn open-modal" data-modal="modal-istanbul">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Sabanci University -->
+                <div class="university-card fade-in" data-category="istanbul private">
+                    <div class="university-image" style="background-color: #e9ecef;">
+                        <img src="https://turkeycampus.com/storage/uploads/HUFiqVgjBWE3u11M0psS1flDnbCIZLWeAxPSBLd3.jpg" alt="Sabanci University" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div class="university-rank">Топ-5 в Турции</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Sabanci University</h3>
+                        <p>Современный частный университет с инновационным подходом к образованию и программами на английском.</p>
+                        <div class="university-meta">
+                            <span>📍 Стамбул</span>
+                            <span>💰 от $12,000/год</span>
+                        </div>
+                        <button class="btn open-modal" data-modal="modal-sabanci">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Koc University -->
+                <div class="university-card fade-in" data-category="istanbul private">
+                    <div class="university-image" style="background-color: #e9ecef;">
+                        <img src="https://www.hse.ru/data/2021/01/29/1404113422/4e85321c55852563872ba13ec6f60c2.jpg" alt="Koc University" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div class="university-rank">Топ-6 в Турции</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Koc University</h3>
+                        <p>Престижный частный университет с сильными программами в области бизнеса, инженерии и медицины.</p>
+                        <div class="university-meta">
+                            <span>📍 Стамбул</span>
+                            <span>💰 от $15,000/год</span>
+                        </div>
+                        <button class="btn open-modal" data-modal="modal-koc">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Anadolu University -->
+                <div class="university-card fade-in" data-category="research">
+                    <div class="university-image" style="background-color: #e9ecef;">
+                        <img src="https://world.uz/files/-%D0%B2-%D1%82%D1%83%D1%80%D1%86%D0%B8%D0%B81_994714ms.jpg" alt="Anadolu University" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div class="university-rank">Топ-7 в Турции</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Anadolu University</h3>
+                        <p>Государственный университет в Эскишехире с одним из крупнейших факультетов дистанционного обучения в мире.</p>
+                        <div class="university-meta">
+                            <span>📍 Эскишехир</span>
+                            <span>💰 от $1,000/год</span>
+                        </div>
+                        <button class="btn open-modal" data-modal="modal-anadolu">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Antalya Bilim University -->
+                <div class="university-card fade-in" data-category="private">
+                    <div class="university-image" style="background-color: #e9ecef;">
+                        <img src="https://study-con.com/wp-content/uploads/2023/01/abu-1-1.jpg" alt="Antalya Bilim University" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div class="university-rank">Топ-8 в Турции</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Antalya Bilim University</h3>
+                        <p>Частный университет с современным кампусом в Анталье, программы на турецком и английском языках.</p>
+                        <div class="university-meta">
+                            <span>📍 Анталья</span>
+                            <span>💰 от $8,000/год</span>
+                        </div>
+                        <button class="btn open-modal" data-modal="modal-antalya">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Izmir University of Economics -->
+                <div class="university-card fade-in" data-category="private">
+                    <div class="university-image" style="background-color: #e9ecef;">
+                        <img src="https://backend.studyfans.com/storage/media/Universities/main_image/2626/Qfa2Mpl2vEpJSt4azK9QVS8cwQtvH92adHNlOIcd.webp" alt="Izmir University of Economics" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div class="university-rank">Топ-9 в Турции</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Izmir University of Economics</h3>
+                        <p>Первый частный университет в Эгейском регионе с сильными программами в области экономики и бизнеса.</p>
+                        <div class="university-meta">
+                            <span>📍 Измир</span>
+                            <span>💰 от $7,000/год</span>
+                        </div>
+                        <button class="btn open-modal" data-modal="modal-izmir">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Sakarya University -->
+                <div class="university-card fade-in" data-category="research">
+                    <div class="university-image" style="background-color: #e9ecef;">
+                        <img src="https://smapse.ru/storage/2019/03/converted/825_585_sakarya-university-sau.jpg" alt="Sakarya University" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div class="university-rank">Топ-10 в Турции</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Sakarya University</h3>
+                        <p>Ведущий государственный университет северо-западной Турции с сильными техническими факультетами.</p>
+                        <div class="university-meta">
+                            <span>📍 Сакарья</span>
+                            <span>💰 от $1,000/год</span>
+                        </div>
+                        <button class="btn open-modal" data-modal="modal-sakarya">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Süleyman Demirel University -->
+                <div class="university-card fade-in" data-category="research">
+                    <div class="university-image" style="background-color: #e9ecef;">
+                        <img src="https://w3.sdu.edu.tr/SDU_Files/Images/et2tnoqn.JPG" alt="Süleyman Demirel University" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div class="university-rank">Топ-11 в Турции</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Süleyman Demirel University</h3>
+                        <p>Крупный государственный университет в живописном городе Испарта, известном как "город роз".</p>
+                        <div class="university-meta">
+                            <span>📍 Испарта</span>
+                            <span>💰 от $800/год</span>
+                        </div>
+                        <button class="btn open-modal" data-modal="modal-demirel">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Tekirdağ Namık Kemal University -->
+                <div class="university-card fade-in" data-category="research">
+                    <div class="university-image" style="background-color: #e9ecef;">
+                        <img src="https://nkuportal.com/wp-content/uploads/2025/06/cc-1024x389.jpg" alt="Tekirdağ Namık Kemal University" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div class="university-rank">Топ-12 в Турции</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Tekirdağ Namık Kemal University</h3>
+                        <p>Ведущий государственный университет в регионе с современным кампусом и развитой инфраструктурой.</p>
+                        <div class="university-meta">
+                            <span>📍 Текирдаг</span>
+                            <span>💰 от $1,000/год</span>
+                        </div>
+                        <button class="btn open-modal" data-modal="modal-namik">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальные окна для университетов Турции -->
+      <!-- Модальные окна для университетов Турции -->
+    <!-- Bogazici University -->
+    <div id="modal-bogazici" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Bogazici University</h3>
+                <div class="modal-rank">Топ-1 в Турции</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="university-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Адрес</span>
+                        <span class="detail-value">Bebek, 34342 Beşiktaş/İstanbul</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💰 Стоимость</span>
+                        <span class="detail-value">от $1,500/год</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🎓 Тип</span>
+                        <span class="detail-value">Государственный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">📞 Телефон</span>
+                        <span class="detail-value">+90 (212) 359 54 00</span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p><strong>Основан в 1863 году</strong> как Robert College. Ведущий государственный университет Турции с преподаванием на английском языке.</p>
+                    
+                    <h4>Факультеты:</h4>
+                    <ul>
+                        <li>Факультет инженерии</li>
+                        <li>Факультет искусств и наук</li>
+                        <li>Факультет экономики и административных наук</li>
+                        <li>Факультет образования</li>
+                        <li>Факультет прикладных дисциплин</li>
+                    </ul>
+
+                    <h4>Программы на английском:</h4>
+                    <p>Компьютерная инженерия, электротехника, машиностроение, физика, химия, математика, экономика, политология, психология</p>
+
+                    <h4>Особенности:</h4>
+                    <p>Кампус расположен на холмах Босфора с панорамным видом. Сильная исследовательская база, международные аккредитации.</p>
+                </div>
+                <div class="modal-actions">
+                    <a href="./index.html#application" class="btn btn-gold">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Middle East Technical University -->
+    <div id="modal-metu" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Middle East Technical University</h3>
+                <div class="modal-rank">Топ-2 в Турции</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="university-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Адрес</span>
+                        <span class="detail-value">Üniversiteler Mah., Dumlupınar Blv. No:1, 06800 Çankaya/Ankara</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💰 Стоимость</span>
+                        <span class="detail-value">от $1,800/год</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🎓 Тип</span>
+                        <span class="detail-value">Государственный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">📞 Телефон</span>
+                        <span class="detail-value">+90 (312) 210 10 00</span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p><strong>Основан в 1956 году</strong>. Лучший технический университет Турции с кампусом 4500 гектаров.</p>
+                    
+                    <h4>Факультеты:</h4>
+                    <ul>
+                        <li>Инженерный факультет</li>
+                        <li>Факультет архитектуры</li>
+                        <li>Факультет искусств и наук</li>
+                        <li>Факультет экономики и административных наук</li>
+                        <li>Факультет образования</li>
+                    </ul>
+
+                    <h4>Технические программы:</h4>
+                    <p>Авиакосмическая инженерия, компьютерная инженерия, электротехника, машиностроение, химическая инженерия, гражданское строительство</p>
+
+                    <h4>Особенности:</h4>
+                    <p>Крупнейший технический парк в Турции (METU Technopolis). Все программы на английском языке. Сильные международные связи.</p>
+                </div>
+                <div class="modal-actions">
+                    <a href="./index.html#application" class="btn btn-gold">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Istanbul Technical University -->
+    <div id="modal-itu" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Istanbul Technical University</h3>
+                <div class="modal-rank">Топ-3 в Турции</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="university-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Адрес</span>
+                        <span class="detail-value">Maslak, 34467 Sarıyer/İstanbul</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💰 Стоимость</span>
+                        <span class="detail-value">от $1,200/год</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🎓 Тип</span>
+                        <span class="detail-value">Государственный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">📞 Телефон</span>
+                        <span class="detail-value">+90 (212) 285 30 00</span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p><strong>Основан в 1773 году</strong> во времена Османской империи. Старейший технический университет Турции.</p>
+                    
+                    <h4>Факультеты:</h4>
+                    <ul>
+                        <li>Факультет гражданского строительства</li>
+                        <li>Факультет архитектуры</li>
+                        <li>Машиностроительный факультет</li>
+                        <li>Факультет электротехники и электроники</li>
+                        <li>Факультет горного дела</li>
+                        <li>Факультет химии и металлургии</li>
+                        <li>Факультет морских наук и технологий</li>
+                    </ul>
+
+                    <h4>Сильные направления:</h4>
+                    <p>Архитектура, гражданское строительство, машиностроение, электротехника, морская инженерия</p>
+
+                    <h4>Особенности:</h4>
+                    <p>5 кампусов в Стамбуле. Историческое наследие. Сильные программы в области морских исследований и архитектуры.</p>
+                </div>
+                <div class="modal-actions">
+                    <a href="./index.html#application" class="btn btn-gold">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Istanbul University -->
+    <div id="modal-istanbul" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Istanbul University</h3>
+                <div class="modal-rank">Топ-4 в Турции</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="university-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Адрес</span>
+                        <span class="detail-value">Beyazıt Mh., 34134 Fatih/İstanbul</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💰 Стоимость</span>
+                        <span class="detail-value">от $4,000/год</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🎓 Тип</span>
+                        <span class="detail-value">Государственный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">📞 Телефон</span>
+                        <span class="detail-value">+90 (212) 455 57 00</span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p><strong>Основан в 1453 году</strong>. Один из старейших и крупнейших университетов Турции.</p>
+                    
+                    <h4>Факультеты (17 факультетов):</h4>
+                    <ul>
+                        <li>Медицинский факультет</li>
+                        <li>Юридический факультет</li>
+                        <li>Инженерный факультет</li>
+                        <li>Факультет естественных наук</li>
+                        <li>Факультет социальных наук</li>
+                        <li>Факультет искусств и гуманитарных наук</li>
+                        <li>Экономический факультет</li>
+                        <li>Факультет коммуникаций</li>
+                        <li>Факультет сельского хозяйства</li>
+                    </ul>
+
+                    <h4>Известные выпускники:</h4>
+                    <p>Нобелевские лауреаты, премьер-министры, известные ученые и писатели</p>
+
+                    <h4>Особенности:</h4>
+                    <p>Главный кампус в историческом районе Фатих. Богатая библиотека с 2+ млн томов. Сильная научная база.</p>
+                </div>
+                <div class="modal-actions">
+                    <a href="./index.html#application" class="btn btn-gold">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sabanci University -->
+    <div id="modal-sabanci" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Sabanci University</h3>
+                <div class="modal-rank">Топ-5 в Турции</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="university-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Адрес</span>
+                        <span class="detail-value">Orta Mahalle, Universite Caddesi No:27, 34956 Tuzla/İstanbul</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💰 Стоимость</span>
+                        <span class="detail-value">от $12,000/год</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🎓 Тип</span>
+                        <span class="detail-value">Частный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">📞 Телефон</span>
+                        <span class="detail-value">+90 (216) 483 90 00</span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p><strong>Основан в 1994 году</strong> Фондом Сабанджи. Современный частный университет с инновационным подходом.</p>
+                    
+                    <h4>Факультеты и школы:</h4>
+                    <ul>
+                        <li>Факультет инженерии и естественных наук</li>
+                        <li>Факультет искусств и социальных наук</li>
+                        <li>Школа менеджмента</li>
+                    </ul>
+
+                    <h4>Междисциплинарные программы:</h4>
+                    <p>Гибкая система первого года. Студенты выбирают специальность после знакомства с разными дисциплинами</p>
+
+                    <h4>Особенности:</h4>
+                    <p>Все программы на английском языке. Сильная исследовательская база. Современный кампус площадью 1.3 млн м²</p>
+                </div>
+                <div class="modal-actions">
+                    <a href="./index.html#application" class="btn btn-gold">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Koc University -->
+    <div id="modal-koc" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Koc University</h3>
+                <div class="modal-rank">Топ-6 в Турции</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="university-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Адрес</span>
+                        <span class="detail-value">Rumeli Feneri Yolu, 34450 Sarıyer/İstanbul</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💰 Стоимость</span>
+                        <span class="detail-value">от $15,000/год</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🎓 Тип</span>
+                        <span class="detail-value">Частный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">📞 Телефон</span>
+                        <span class="detail-value">+90 (212) 338 10 00</span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p><strong>Основан в 1993 году</strong> семьей Коч. Ведущий частный университет с высокими академическими стандартами.</p>
+                    
+                    <h4>Колледжи и школы:</h4>
+                    <ul>
+                        <li>Колледж административных наук и экономики</li>
+                        <li>Колледж наук</li>
+                        <li>Колледж гуманитарных и социальных наук</li>
+                        <li>Инженерный колледж</li>
+                        <li>Юридическая школа</li>
+                        <li>Медицинская школа</li>
+                        <li>Школа медсестер</li>
+                    </ul>
+
+                    <h4>Сильные направления:</h4>
+                    <p>Бизнес, экономика, инженерия, медицина, право, социальные науки</p>
+
+                    <h4>Особенности:</h4>
+                    <p>Тесные связи с промышленностью. Современный кампус на берегу Босфора. Сильная исследовательская деятельность.</p>
+                </div>
+                <div class="modal-actions">
+                    <a href="./index.html#application" class="btn btn-gold">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Anadolu University -->
+    <div id="modal-anadolu" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Anadolu University</h3>
+                <div class="modal-rank">Топ-7 в Турции</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="university-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Адрес</span>
+                        <span class="detail-value">Yunus Emre Kampüsü, Tepebaşı, 26470 Eskişehir</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💰 Стоимость</span>
+                        <span class="detail-value">от $1,000/год</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🎓 Тип</span>
+                        <span class="detail-value">Государственный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">📞 Телефон</span>
+                        <span class="detail-value">+90 (222) 335 05 80</span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p><strong>Основан в 1958 году</strong>. Крупнейший университет Турции по количеству студентов.</p>
+                    
+                    <h4>Факультеты:</h4>
+                    <ul>
+                        <li>Факультет образования</li>
+                        <li>Факультет экономики и административных наук</li>
+                        <li>Инженерный факультет</li>
+                        <li>Факультет искусств и дизайна</li>
+                        <li>Факультет коммуникаций</li>
+                        <li>Факультет социальных наук</li>
+                        <li>Факультет открытого образования (дистанционное)</li>
+                    </ul>
+
+                    <h4>Дистанционное обучение:</h4>
+                    <p>Более 1.5 млн студентов на программах открытого образования</p>
+
+                    <h4>Особенности:</h4>
+                    <p>Расположен в студенческом городе Эскишехир. Безопасная и дружелюбная атмосфера. Доступное образование.</p>
+                </div>
+                <div class="modal-actions">
+                    <a href="./index.html#application" class="btn btn-gold">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Antalya Bilim University -->
+    <div id="modal-antalya" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Antalya Bilim University</h3>
+                <div class="modal-rank">Топ-8 в Турции</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="university-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Адрес</span>
+                        <span class="detail-value">Çıplaklı Mah., Akdeniz Bulvarı No:290/A, 07190 Döşemealtı, Antalya</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💰 Стоимость</span>
+                        <span class="detail-value">от $8,000/год</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🎓 Тип</span>
+                        <span class="detail-value">Частный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">📞 Телефон</span>
+                        <span class="detail-value">+90 (242) 310 10 10</span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p><strong>Основан в 2010 году</strong>. Современный частный университет в туристической столице Турции.</p>
+                    
+                    <h4>Факультеты:</h4>
+                    <ul>
+                        <li>Юридический факультет</li>
+                        <li>Факультет инженерии и естественных наук</li>
+                        <li>Факультет экономики и административных наук</li>
+                        <li>Факультет изобразительных искусств и архитектуры</li>
+                        <li>Факультет туризма</li>
+                        <li>Факультет здравоохранения</li>
+                        <li>Стоматологический факультет</li>
+                    </ul>
+
+                    <h4>Стоимость программ:</h4>
+                    <p>Стоматология: ~$14,000/год<br>Инженерия: ~$8,000-9,000/год</p>
+
+                    <h4>Особенности:</h4>
+                    <p>Скидки до 60% для иностранных студентов. Программы на турецком и английском. Современные лаборатории.</p>
+                </div>
+                <div class="modal-actions">
+                    <a href="./index.html#application" class="btn btn-gold">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Izmir University of Economics -->
+    <div id="modal-izmir" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Izmir University of Economics</h3>
+                <div class="modal-rank">Топ-9 в Турции</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="university-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Адрес</span>
+                        <span class="detail-value">Balçova Mahallesi, 35330 Balçova/İzmir</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💰 Стоимость</span>
+                        <span class="detail-value">от $7,000/год</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🎓 Тип</span>
+                        <span class="detail-value">Частный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">📞 Телефон</span>
+                        <span class="detail-value">+90 (232) 488 81 88</span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p><strong>Основан в 2001 году</strong>. Первый частный университет в Эгейском регионе.</p>
+                    
+                    <h4>Факультеты:</h4>
+                    <ul>
+                        <li>Факультет экономики</li>
+                        <li>Факультет бизнес-администрирования</li>
+                        <li>Инженерный факультет</li>
+                        <li>Факультет искусств и дизайна</li>
+                        <li>Факультет коммуникаций</li>
+                        <li>Юридический факультет</li>
+                        <li>Факультет здравоохранения</li>
+                        <li>Медицинский факультет</li>
+                    </ul>
+
+                    <h4>Программы на английском:</h4>
+                    <p>$7,000-10,000/год<br>На турецком: $5,000-7,000/год</p>
+
+                    <h4>Особенности:</h4>
+                    <p>Сильные программы в экономике и бизнесе. Международные программы обмена. Стипендии для иностранных студентов.</p>
+                </div>
+                <div class="modal-actions">
+                    <a href="./index.html#application" class="btn btn-gold">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sakarya University -->
+    <div id="modal-sakarya" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Sakarya University</h3>
+                <div class="modal-rank">Топ-10 в Турции</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="university-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Адрес</span>
+                        <span class="detail-value">Esentepe Mahallesi, Serdivan, 54187 Sakarya</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💰 Стоимость</span>
+                        <span class="detail-value">от $1,000/год</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🎓 Тип</span>
+                        <span class="detail-value">Государственный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">📞 Телефон</span>
+                        <span class="detail-value">+90 (264) 295 00 00</span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p><strong>Основан в 1970 году</strong>. Ведущий государственный университет северо-западной Турции.</p>
+                    
+                    <h4>Факультеты:</h4>
+                    <ul>
+                        <li>Инженерный факультет</li>
+                        <li>Факультет естественных наук</li>
+                        <li>Факультет экономики и административных наук</li>
+                        <li>Факультет коммуникаций</li>
+                        <li>Факультет туризма</li>
+                        <li>Медицинский факультет</li>
+                        <li>Факультет искусств и дизайна</li>
+                        <li>Факультет спортивных наук</li>
+                        <li>Профессиональные школы</li>
+                    </ul>
+
+                    <h4>Технические направления:</h4>
+                    <p>Компьютерная инженерия, электротехника, машиностроение, гражданское строительство</p>
+
+                    <h4>Особенности:</h4>
+                    <p>Современный кампус с лабораториями. Активное участие в международных программах. Развитая спортивная инфраструктура.</p>
+                </div>
+                <div class="modal-actions">
+                    <a href="./index.html#application" class="btn btn-gold">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Süleyman Demirel University -->
+    <div id="modal-demirel" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Süleyman Demirel University</h3>
+                <div class="modal-rank">Топ-11 в Турции</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="university-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Адрес</span>
+                        <span class="detail-value">Çünür Mahallesi, Süleyman Demirel Üniversitesi Kampüsü, 32260 Isparta</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💰 Стоимость</span>
+                        <span class="detail-value">от $800/год</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🎓 Тип</span>
+                        <span class="detail-value">Государственный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">📞 Телефон</span>
+                        <span class="detail-value">+90 (246) 211 10 00</span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p><strong>Основан в 1992 году</strong>. Крупный государственный университет в "городе роз" Испарта.</p>
+                    
+                    <h4>Факультеты:</h4>
+                    <ul>
+                        <li>Факультет туризма</li>
+                        <li>Инженерный факультет</li>
+                        <li>Факультет архитектуры</li>
+                        <li>Факультет экономики и административных наук</li>
+                        <li>Факультет образования</li>
+                        <li>Факультет искусств и дизайна</li>
+                        <li>Медицинский факультет</li>
+                        <li>Факультет коммуникаций</li>
+                        <li>Факультет сельского хозяйства</li>
+                    </ul>
+
+                    <h4>Туристические программы:</h4>
+                    <p>Гостиничный менеджмент, туристический менеджмент, гастрономия</p>
+
+                    <h4>Особенности:</h4>
+                    <p>Спокойная и безопасная атмосфера. Активное участие в программах Erasmus+. Низкая стоимость обучения.</p>
+                </div>
+                <div class="modal-actions">
+                    <a href="./index.html#application" class="btn btn-gold">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tekirdağ Namık Kemal University -->
+    <div id="modal-namik" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Tekirdağ Namık Kemal University</h3>
+                <div class="modal-rank">Топ-12 в Турции</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="university-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Адрес</span>
+                        <span class="detail-value">Değirmenaltı Kampüsü, 59030 Tekirdağ</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💰 Стоимость</span>
+                        <span class="detail-value">от $1,000/год</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🎓 Тип</span>
+                        <span class="detail-value">Государственный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">📞 Телефон</span>
+                        <span class="detail-value">+90 (282) 250 00 00</span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p><strong>Основан в 2006 году</strong>. Ведущий государственный университет в регионе Текирдаг.</p>
+                    
+                    <h4>Факультеты (10 факультетов):</h4>
+                    <ul>
+                        <li>Факультет инженерии (Çorlu)</li>
+                        <li>Факультет наук и литературы</li>
+                        <li>Факультет изобразительных искусств, дизайна и архитектуры</li>
+                        <li>Юридический факультет</li>
+                        <li>Факультет экономики и административных наук</li>
+                        <li>Теологический факультет</li>
+                        <li>Факультет здравоохранения</li>
+                        <li>Факультет спортивных наук</li>
+                        <li>Факультет сельского хозяйства</li>
+                        <li>Консерватория</li>
+                    </ul>
+
+                    <h4>Инженерные программы:</h4>
+                    <p>В кампусе Чорлу: машиностроение, текстильная инженерия, компьютерная инженерия</p>
+
+                    <h4>Особенности:</h4>
+                    <p>Современный кампус с развитой инфраструктурой. Международные программы обмена. Доступное образование.</p>
+                </div>
+                <div class="modal-actions">
+                    <a href="./index.html#application" class="btn btn-gold">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Культура Турции -->
+    <section class="culture">
+        <div class="container">
+            <div class="section-title">
+                <h2>Культура и жизнь в Турции</h2>
+                <p>Узнайте, каково жить и учиться в этой уникальной стране</p>
+            </div>
+            <div class="culture-content">
+                <div class="culture-text fade-in">
+                    <h2>Жизнь в Турции: что нужно знать</h2>
+                    <p>Турция - страна, где встречаются Восток и Запад, создавая уникальное культурное пространство. Студенты, приезжающие сюда, погружаются в богатую историю, гостеприимную атмосферу и разнообразную кухню.</p>
+                    <p>От исторических памятников Стамбула до средиземноморских курортов Анталии - Турция предлагает невероятное разнообразие. Здесь вы найдете дружелюбных людей, доступную стоимость жизни и прекрасные возможности для путешествий.</p>
+                    
+                    <div class="culture-features">
+                        <div class="culture-feature">
+                            <div class="culture-icon">🍽️</div>
+                            <div>
+                                <h4>Турецкая кухня</h4>
+                                <p>Кебаб, баклава, чай и турецкий кофе</p>
+                            </div>
+                        </div>
+                        <div class="culture-feature">
+                            <div class="culture-icon">🕌</div>
+                            <div>
+                                <h4>Богатая история</h4>
+                                <p>Османская империя, Византия, древние цивилизации</p>
+                            </div>
+                        </div>
+                        <div class="culture-feature">
+                            <div class="culture-icon">🏛️</div>
+                            <div>
+                                <h4>Архитектура</h4>
+                                <p>Айя-София, Голубая мечеть, Каппадокия</p>
+                            </div>
+                        </div>
+                        <div class="culture-feature">
+                            <div class="culture-icon">🏖️</div>
+                            <div>
+                                <h4>Климат и природа</h4>
+                                <p>4 моря, горы, пляжи и уникальные ландшафты</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="culture-image fade-in">
+                    <div style="height: 400px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 1.1rem;">
+                        <img src="https://images.hindustantimes.com/img/2023/01/12/1600x900/pexels-lokman-salan-5916912_1673501286856_1673501323045_1673501323045.jpg" alt="Культура Турции" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Процесс поступления -->
+    <section class="admission-process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Процесс поступления в турецкие университеты</h2>
+                <p>Пошаговое руководство для будущих студентов</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step fade-in">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Консультация</h3>
+                        <p>Определяем ваши цели, выбираем университет и программу согласно вашим интересам</p>
+                    </div>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Подготовка к YÖS</h3>
+                        <p>Помогаем подготовиться к вступительному экзамену для иностранных студентов</p>
+                    </div>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Подача документов</h3>
+                        <p>Помогаем собрать и оформить все необходимые документы для поступления</p>
+                    </div>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Получение визы</h3>
+                        <p>Помогаем оформить студенческую визу и вид на жительство</p>
+                    </div>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Переезд и адаптация</h3>
+                        <p>Оказываем поддержку после прибытия в Турцию, помогаем с поиском жилья</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Другие страны -->
+    <section class="other-countries">
+        <div class="container">
+            <div class="section-title">
+                <h2>Другие страны для обучения</h2>
+                <p>Исследуйте все возможности, которые мы предлагаем</p>
+            </div>
+
+            <div class="countries-grid">
+                <div class="country-card fade-in">
+                    <div class="country-flag" >
+                        <img src="https://www.travelandleisure.com/thmb/kE_g7YiI1N8QbsON--_5B1TXyBk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/TAL-florence-ITCITIES0924-6aada9377bca4896a4338ab8950cca39.jpg" style="width: 100%; height: 150px;">
+                    </div>
+                    <div class="country-info">
+                        <h3>Италия</h3>
+                        <p>Искусство, наука и вкус Италии в каждом дне обучения</p>
+                        <a href="italy.html" class="btn" style="margin-top: 20px;">Подробнее</a>
+                    </div>
+                </div>
+                <div class="country-card fade-in">
+                    <div class="country-flag">
+                        <img src="./images/korea-1.jpg" style="width: 100%; height: 150px;">
+                    </div>
+                    <div class="country-info">
+                        <h3>Южная Корея</h3>
+                        <p>Передовые технологии, качественное образование</p>
+                        <a href="south-korea.html" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                <div class="country-card fade-in">
+                    <div class="country-flag" >
+                         <img src="./images/chinese.jpg" style="width: 100%; height: 150px;">
+                    </div>
+                    <div class="country-info">
+                        <h3>Китай</h3>
+                        <p>Современные университеты с вековыми традициями</p>
+                        <a href="china.html" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                <div class="country-card fade-in">
+                    <div class="country-flag" >
+                        <img src="./images/praga.jpg" style="width: 100%; height: 150px;">
+                    </div>
+                    <div class="country-info">
+                        <h3>Чехия</h3>
+                        <p>Качественное и доступное образование в Европы</p>
+                        <a href="czech.html" class="btn">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA секция -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="fade-in">Готовы начать обучение в Турции?</h2>
+            <p class="fade-in">Оставьте заявку, и наш специалист свяжется с вами для бесплатной консультации</p>
+            <a href="./index.html#application" class="btn btn-gold fade-in">Подать заявку</a>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Kiparis Global Academy</h3>
+                    <p>Мы помогаем студентам поступать и учиться в ведущих вузах Южной Кореи, Китая, Испании, Чехии и Турции.</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/hanguk_uniway_" target="_blank" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            @hanguk_uniway_
+                        </a>
+                        <a href="https://www.tiktok.com/@jden053" target="_blank" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 256 256">
+                                <path fill="#25F4EE" d="M152.9 0h36.6v36.4c12.3 8.6 27.4 13.6 43.3 13.6V86c-16.3 0-31.9-3.6-46-10v84.1c0 47.8-38.8 86.6-86.6 86.6C52.4 246.7 13.5 207.9 13.5 160.1S52.3 73.5 100.1 73.5c5.3 0 10.5.5 15.5 1.4v39.7c-4.9-1.4-10.1-2.1-15.5-2.1-26.5 0-48.1 21.5-48.1 48.1s21.5 48.1 48.1 48.1c26.5 0 48.1-21.5 48.1-48.1V0z"/>
+                                <path fill="#FE2C55" d="M189.5 36.4V72c-10.5-7.3-19.6-16.5-27-27V0h-9.6v160.1c0 47.8-38.8 86.6-86.6 86.6C52.4 246.7 13.5 207.9 13.5 160.1S52.3 73.5 100.1 73.5c5.3 0 10.5.5 15.5 1.4v39.7c-4.9-1.4-10.1-2.1-15.5-2.1-26.5 0-48.1 21.5-48.1 48.1s21.5 48.1 48.1 48.1c26.5 0 48.1-21.5 48.1-48.1V0h44.3z"/>
+                            </svg>
+                            @jden053
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Страны</h3>
+                   <ul>
+                        <li><a href="south-korea.html">Южная Корея</a></li>
+                        <li><a href="china.html">Китай</a></li>
+                        <li><a href="italy.html">Италия</a></li>
+                        <li><a href="spain.html">Испания</a></li>
+                        <li><a href="czech.html">Чехия</a></li>
+                        <li><a href="turkey.html">Турция</a></li>
+                    </ul>
+                </div>
+               
+                <div class="footer-col">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>📞 +821029121007</li>
+                        <li>✉️ globalacademykiparis@gmail.com</li>
+                        <li>📍 충남 아산시 용화동 1527</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Kiparis Global Academy. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript для модальных окон
+        document.addEventListener('DOMContentLoaded', function() {
+            // Открытие модального окна
+            const openModalButtons = document.querySelectorAll('.open-modal');
+            const modals = document.querySelectorAll('.modal');
+            const closeModalButtons = document.querySelectorAll('.close-modal');
+            
+            openModalButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modalId = this.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.style.display = 'block';
+                        document.body.style.overflow = 'hidden'; // Запрещаем скролл страницы
+                    }
+                });
+            });
+            
+            // Закрытие модального окна
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Возвращаем скролл
+                });
+            });
+            
+            // Закрытие при клике вне модального окна
+            window.addEventListener('click', function(event) {
+                modals.forEach(modal => {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+            
+            // Закрытие по клавише Escape
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    modals.forEach(modal => {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    });
+                }
+            });
+
+            // JavaScript для интерактивных элементов
+            // Мобильное меню
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const nav = document.querySelector('nav ul');
+            
+            mobileMenu.addEventListener('click', function() {
+                nav.classList.toggle('show');
+            });
+            
+            // Табы для университетов
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const universityCards = document.querySelectorAll('.university-card');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Удаляем активный класс у всех кнопок
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    // Добавляем активный класс текущей кнопке
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-tab');
+                    
+                    universityCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category').includes(category)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Анимация появления элементов при скролле
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('fade-in');
+                    }
+                });
+            };
+            
+            // Запускаем при загрузке и при скролле
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll();
+        });
+    </script>
+</body>
+</html>
