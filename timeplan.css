@@ -1,0 +1,225 @@
+        /* Стили для таймлайна поступления */
+.admission-timeline {
+    background: var(--light-bg);
+    padding: 80px 0;
+}
+
+.timeline-header {
+    margin-bottom: 50px;
+}
+
+.header-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(12, 27, 44, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.header-icon {
+    font-size: 3rem;
+    flex-shrink: 0;
+}
+
+.header-content h3 {
+    color: var(--dark-green);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.header-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.detail .label {
+    font-weight: 600;
+    color: var(--dark-blue);
+}
+
+.detail .value {
+    color: var(--light-green);
+    font-weight: 500;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.timeline-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.marker-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--white);
+    border: 3px solid var(--light-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 15px rgba(30, 66, 50, 0.2);
+    flex-shrink: 0;
+}
+
+.timeline-line {
+    width: 3px;
+    background: var(--light-green);
+    flex-grow: 1;
+    margin-top: 15px;
+    border-radius: 2px;
+}
+
+.timeline-item:last-child .timeline-line {
+    display: none;
+}
+
+.timeline-content {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(12, 27, 44, 0.08);
+    flex-grow: 1;
+    border-left: 4px solid var(--light-green);
+}
+
+.timeline-period {
+    background: var(--light-green);
+    color: var(--white);
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.timeline-title {
+    color: var(--dark-green);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.timeline-description {
+    color: var(--dark-blue);
+    line-height: 1.6;
+}
+
+.timeline-description ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.timeline-description li {
+    margin-bottom: 5px;
+}
+
+.timeline-note {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    color: #856404;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+.timeline-cta {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(12, 27, 44, 0.1);
+    text-align: center;
+    margin-top: 50px;
+    border: 2px solid var(--gold);
+}
+
+.timeline-cta h3 {
+    color: var(--dark-green);
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.timeline-cta p {
+    color: var(--dark-blue);
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+/* Адаптивность для таймлайна */
+@media (max-width: 768px) {
+    .header-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+    }
+    
+    .timeline-marker {
+        flex-direction: row;
+        margin-right: 0;
+        margin-bottom: 20px;
+        align-items: center;
+    }
+    
+    .timeline-line {
+        width: 100%;
+        height: 3px;
+        margin-top: 0;
+        margin-left: 15px;
+    }
+    
+    .timeline-content {
+        margin-left: 0;
+    }
+    
+    .detail {
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline-cta {
+        padding: 30px 20px;
+    }
+    
+    .timeline-content {
+        padding: 20px;
+    }
+    
+    .header-card {
+        padding: 20px;
+    }
+}
