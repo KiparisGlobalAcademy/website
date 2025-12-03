@@ -6,10 +6,63 @@
     <title>Kiparis Global Academy - Образование за рубежом</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Стили для блока отзывов в секции "О нас" */
+        .about-reviews {
+            flex: 1;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .about-reviews h3 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.5rem;
+        }
+        
+        .review-preview {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #b8860b;
+        }
+        
+        .review-preview p {
+            font-style: italic;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .review-author {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9rem;
+        }
+        
+        .reviews-btn {
+            display: inline-block;
+            margin-top: 10px;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .reviews-btn:hover {
+            background-color: #b8860b;
+        }
+    </style>
 </head>
 <body>
      <!-- Шапка -->
- <header>
+    <header>
         <div class="container header-container">
             <a href="index.html" class="logo">Kiparis<span>Global</span></a>
             <nav>
@@ -78,15 +131,23 @@
                     <p>Несмотря на то, что компания недавно открылась, у нашей команды уже есть успешные кейсы поступлений и четко выстроенная система сопровождения студентов.</p>
                     <a href="about.html" class="btn">Подробнее</a>
                 </div>
-                <div class="about-image fade-in">
-                    <div style="height: 400px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 1.1rem;">
-                        <img src="./images/bg.jpg">    
+                <div class="about-reviews fade-in">
+                    <h3>Отзывы студентов</h3>
+                    <div class="review-preview">
+                        <p>Kiparis Global Academy маған Оңтүстік Кореядағы Yonsei University-ге түсуге толық көмек көрсетті...</p>
+                        <div class="review-author">Айгерім Нұрғалиева, Yonsei University</div>
                     </div>
+                    <div class="review-preview">
+                        <p>Поступление в Китай казалось мне нереальной мечтой, но с помощью Kiparis Global Academy я стала студенткой Peking University!</p>
+                        <div class="review-author">Мария Захарова, Peking University</div>
+                    </div>
+                    <a href="reviews.html" class="reviews-btn">Все отзывы</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Остальной код остается без изменений -->
     <!-- Страны -->
     <section class="countries">
         <div class="container">
@@ -652,5 +713,4 @@ fetch('footer.html')
     </script>
     
 </body>
-
 </html>
