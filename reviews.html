@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiparis Global Academy - Отзывы студентов</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Дополнительные стили для страницы отзывов */
+        .testimonials-page {
+            padding: 80px 0 60px;
+        }
+        
+        .testimonials-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .testimonial-category {
+            margin: 60px 0 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #b8860b;
+            font-size: 1.8rem;
+            color: #333;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #b8860b;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .author-info h4 {
+            margin: 0 0 5px;
+            color: #333;
+        }
+        
+        .author-info p {
+            margin: 0;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .country-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .country-filter-btn {
+            padding: 8px 20px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .country-filter-btn:hover {
+            background: #f8f8f8;
+        }
+        
+        .country-filter-btn.active {
+            background: #b8860b;
+            color: white;
+            border-color: #b8860b;
+        }
+        
+        .video-testimonials {
+            margin-top: 70px;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .video-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .video-placeholder {
+            width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+        .video-placeholder video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+        .video-info {
+            padding: 20px;
+        }
+        
+        .video-info h4 {
+            margin: 0 0 10px;
+            color: #333;
+        }
+        
+        .video-info p {
+            margin: 0;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .leave-review {
+            background: #f9f9f9;
+            padding: 60px 0;
+            margin-top: 70px;
+            text-align: center;
+        }
+        
+        .leave-review h3 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .leave-review p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-card {
+                padding: 20px;
+            }
+            
+            .country-filter {
+                gap: 5px;
+            }
+            
+            .country-filter-btn {
+                padding: 6px 15px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+        <!-- Шапка -->
+  <div id="header"></div>
+<script src="/header.js"></script>
+
+
+    <!-- Герой секция для отзывов -->
+    <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://media.istockphoto.com/id/1357264500/vector/reputation-management-team-monitor-online-feedback-rating-to-improve-brand-positive-rank-and.jpg?s=612x612&w=0&k=20&c=1K-F8-sBrjH_OjEWv0mVp_D_2jZ38ue4VFg4UWhbKJY='); background-size: cover; background-position: center;">
+        <div class="container">
+            <h1 class="fade-in">Отзывы наших студентов</h1>
+            <p class="fade-in">Реальные истории студентов, которые уже учатся за рубежом с Kiparis Global Academy</p>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="testimonials-page" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Истории успеха</h2>
+                <p>Что говорят о нас те, кто уже учится за границей</p>
+            </div>
+            
+            <div class="testimonials-intro fade-in">
+                <p>За годы работы мы помогли  студентов поступить в ведущие университеты мира. Здесь они делятся своим опытом сотрудничества с нами, рассказывают о процессе поступления и своих впечатлениях от обучения за рубежом.</p>
+            </div>
+            
+            <!-- Фильтр по странам -->
+            <div class="country-filter">
+                <button class="country-filter-btn active" data-filter="all">Все страны</button>
+                <button class="country-filter-btn" data-filter="korea">Южная Корея</button>
+                <button class="country-filter-btn" data-filter="china">Китай</button>
+                <button class="country-filter-btn" data-filter="czech">Чехия</button>
+                <button class="country-filter-btn" data-filter="spain">Испания</button>
+                <button class="country-filter-btn" data-filter="turkey">Турция</button>
+                <button class="country-filter-btn" data-filter="italy">Италия</button>
+            </div>
+            
+            <!-- Сетка отзывов -->
+            <div class="testimonials-grid">
+                <!-- Отзыв 1 -->
+                <div class="testimonial-card fade-in" data-country="korea">
+                    <div class="testimonial-text">
+                        Kiparis Global Academy маған Оңтүстік Кореядағы Yonsei University-ге түсуге толық көмек көрсетті — құжаттарды дайындаудан бастап, сұхбатқа дейін бірге дайындалдық. Әсіресе мотивациялық хат жазуда және визаны рәсімдеуде көп қолдау болды. Қазір Сеулде оқып, жаңа өмір бастағаныма қуаныштымын!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">АН</div>
+                        <div class="author-info">
+                            <h4>Айгерім Нұрғалиева</h4>
+                            <p>Yonsei University, Оңтүстік Корея (Қазақстан)</p>
+                            <p style="color: #b8860b; font-size: 0.85rem; margin-top: 5px;">Поступила в 2023 году</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Отзыв 2 -->
+                <div class="testimonial-card fade-in" data-country="china">
+                    <div class="testimonial-text">
+                        Поступление в Китай казалось мне нереальной мечтой, но с помощью Kiparis Global Academy я стала студенткой Guangdong Polytechnic Normal University! Они помогли не только с документами, но и с подготовкой к экзамену HSK, поиском жилья и адаптацией в новой стране. Сейчас учусь на бизнес-администрация и уже нашла друзей из разных стран мира.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">МЗ</div>
+                        <div class="author-info">
+                            <h4>Аиша</h4>
+                            <p>Guangdong Polytechnic Normal University, Китай</p>
+                            <p style="color: #b8860b; font-size: 0.85rem; margin-top: 5px;">Поступила в 2022 году</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Отзыв 3 -->
+                <div class="testimonial-card fade-in" data-country="czech">
+                    <div class="testimonial-text">
+                        Kiparis Global Academy командасына үлкен алғыс! Олар маған Чехиядағы Charles University-ге түсуге көмектесті. Алғашында Еуропада оқуға түсу қиын сияқты көрінген, бірақ кеңесшілерім әр қадамды түсіндіріп, құжаттарды аударудан бастап, виза алу мен жатақхана табуға дейін бірге жүрді. Қазір Прагада оқып жүрмін солардың көмегімен.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ДА</div>
+                        <div class="author-info">
+                            <h4>Динара Абдрахман</h4>
+                            <p>Charles University, Чехия (Қазақстан)</p>
+                            <p style="color: #b8860b; font-size: 0.85rem; margin-top: 5px;">Поступила в 2023 году</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Отзыв 4 -->
+                <div class="testimonial-card fade-in" data-country="korea">
+                    <div class="testimonial-text">
+                        Я выбрал Тонгук для изучения компьютерных наук, и Kiparis Global Academy сделали процесс поступления максимально простым. Они помогли собрать все документы, подготовиться к интервью . Сейчас я на 2 курсе, и это именно то образование, о котором я мечтал.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">АК</div>
+                        <div class="author-info">
+                            <h4>Бакытбек</h4>
+                            <p>Тонгук, Южная Корея</p>
+                            <p style="color: #b8860b; font-size: 0.85rem; margin-top: 5px;">Поступил в 2024 году</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Отзыв 5 -->
+                <div class="testimonial-card fade-in" data-country="turkey">
+                    <div class="testimonial-text">
+                        Поступала в университет в Турции на программу по туризму и гостиничному бизнесу. Команда Kiparis очень подробно объяснила все этапы, помогла с нострификацией диплома и подготовкой к вступительным экзаменам. Сейчас учусь в Стамбуле, практикую турецкий и уже прохожу стажировку в отеле.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">СМ</div>
+                        <div class="author-info">
+                            <h4>Студент </h4>
+                            <p>University of Istanbul, Турция</p>
+                            <p style="color: #b8860b; font-size: 0.85rem; margin-top: 5px;">Поступила в 2022 году</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Отзыв 6 -->
+                <div class="testimonial-card fade-in" data-country="spain">
+                    <div class="testimonial-text">
+                        Мечтал учиться в Испании, и Kiparis Global Academy помогли мне поступить в University of Barcelona на факультет экономики. Особенно ценю помощь с испанским языком — мне подобрали интенсивные курсы перед поездкой. Барселона — потрясающий город для учебы и жизни!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ДИ</div>
+                        <div class="author-info">
+                            <h4>Данил Иванов</h4>
+                            <p>University of Barcelona, Испания</p>
+                            <p style="color: #b8860b; font-size: 0.85rem; margin-top: 5px;">Поступил в 2023 году</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Отзыв 7 -->
+                <div class="testimonial-card fade-in" data-country="italy">
+                    <div class="testimonial-text">
+                        Учусь в Милане на дизайнера, о чем всегда мечтала. Kiparis помогли подготовить портфолио, которое произвело впечатление на приемную комиссию. Также они организовали мне языковые курсы итальянского, что очень помогло в адаптации. Италия — страна искусства, и учиться здесь невероятно вдохновляюще!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ЕЛ</div>
+                        <div class="author-info">
+                            <h4>Екатерина Лебедева</h4>
+                            <p>Politecnico di Milano, Италия</p>
+                            <p style="color: #b8860b; font-size: 0.85rem; margin-top: 5px;">Поступила в 2022 году</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Отзыв 8 -->
+                <!-- <div class="testimonial-card fade-in" data-country="czech">
+                    <div class="testimonial-text">
+                        Выбрал Чехию из-за бесплатного образования на чешском языке. Kiparis помогли мне с интенсивными языковыми курсами и подготовкой к нострификации. Сейчас учусь в Высшей школе экономики в Праге, город и учеба превосходят все ожидания. Спасибо за профессиональную поддержку на каждом этапе!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">НС</div>
+                        <div class="author-info">
+                            <h4>Нурлан Сапарбек</h4>
+                            <p>Vysoká škola ekonomická, Чехия (Кыргызстан)</p>
+                            <p style="color: #b8860b; font-size: 0.85rem; margin-top: 5px;">Поступил в 2023 году</p>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            
+            <!-- Видеоотзывы -->
+            <div class="video-testimonials">
+                <div class="section-title">
+                    <h2>Видеоотзывы</h2>
+                    <p>Наши студенты делятся своими историями в видеоформате</p>
+                </div>
+                
+                <div class="video-grid">
+                    <div class="video-item fade-in">
+                        <div class="video-placeholder">
+                             <video controls>
+            <source src="./videos/китай.mp4" type="video/mp4">
+        </video>
+                        </div>
+                        <div class="video-info">
+                            <h4>Аиша о поступлении в GPNU</h4>
+                            <p>Студентка делится опытом подготовки и адаптации в Китае</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-item fade-in">
+                        <div class="video-placeholder">
+                            <video controls>
+            <source src="./videos/турция.mp4" type="video/mp4">
+        </video>
+                        </div>
+                        <div class="video-info">
+                            <h4>Жизнь студента в Турции</h4>
+                            <p>Студент рассказывает об учебе и жизни в Чехии</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-item fade-in">
+                        <div class="video-placeholder">
+                             <video controls>
+            <source src="./videos/корея.mp4" type="video/mp4">
+        </video>
+                        </div>
+                        <div class="video-info">
+                            <h4>Учеба в Корее: впечатления</h4>
+                            <p>Бакытбек о своем опыте в Тонгук университете</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+    
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Загрузка футера
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+        
+        // Фильтрация отзывов по странам
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.country-filter-btn');
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Удаляем активный класс у всех кнопок
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Добавляем активный класс текущей кнопке
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    testimonialCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-country') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Мобильное меню
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const nav = document.querySelector('nav ul');
+            
+            mobileMenu.addEventListener('click', function() {
+                nav.classList.toggle('show');
+            });
+            
+            // Анимация появления элементов при скролле
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('fade-in');
+                    }
+                });
+            };
+            
+            // Запускаем при загрузке и при скролле
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll();
+        });
+    </script>
+</body>
+</html>

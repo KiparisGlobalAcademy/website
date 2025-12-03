@@ -19,7 +19,6 @@
             background-color: rgba(12, 27, 44, 0.9);
             animation: fadeIn 0.3s ease;
         }
-
         .modal-content {
             background-color: var(--white);
             margin: 5% auto;
@@ -32,25 +31,21 @@
             position: relative;
             overflow: hidden;
         }
-
         @keyframes slideIn {
             from { transform: translateY(-50px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
-
         .modal-header {
             background: linear-gradient(135deg, var(--dark-green), var(--light-green));
             color: var(--white);
             padding: 25px 30px;
             position: relative;
         }
-
         .modal-header h3 {
             color: var(--white);
             font-size: 1.8rem;
             margin: 0;
         }
-
         .modal-rank {
             position: absolute;
             top: 20px;
@@ -62,7 +57,6 @@
             font-size: 0.9rem;
             font-weight: 600;
         }
-
         .close-modal {
             position: absolute;
             top: 20px;
@@ -81,18 +75,15 @@
             border-radius: 50%;
             transition: all 0.3s ease;
         }
-
         .close-modal:hover {
             background: rgba(255,255,255,0.2);
             transform: rotate(90deg);
         }
-
         .modal-body {
             padding: 30px;
             max-height: 60vh;
             overflow-y: auto;
         }
-
         .university-details {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -101,37 +92,31 @@
             padding-bottom: 20px;
             border-bottom: 1px solid #eee;
         }
-
         .detail-item {
             display: flex;
             flex-direction: column;
         }
-
         .detail-label {
             font-size: 0.9rem;
             color: var(--dark-blue);
             opacity: 0.7;
             margin-bottom: 5px;
         }
-
         .detail-value {
             font-weight: 600;
             color: var(--dark-green);
             font-size: 1.1rem;
         }
-
         .modal-description {
             margin-bottom: 25px;
             line-height: 1.7;
         }
-
         .modal-features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
             margin-bottom: 25px;
         }
-
         .feature-item {
             display: flex;
             align-items: center;
@@ -140,28 +125,23 @@
             background: var(--light-bg);
             border-radius: 6px;
         }
-
         .feature-icon {
             color: var(--light-green);
             font-size: 1.2rem;
         }
-
         .modal-actions {
             display: flex;
             gap: 15px;
             margin-top: 25px;
             flex-wrap: wrap;
         }
-
         .modal-actions .btn {
             flex: 1;
             min-width: 150px;
         }
-
         .social-links {
             margin-top: 20px;
         }
-
         .social-link {
             display: flex;
             align-items: center;
@@ -171,52 +151,43 @@
             margin-bottom: 10px;
             transition: color 0.3s ease;
         }
-
         .social-link:hover {
             color: var(--gold);
         }
-
         .social-link svg {
             flex-shrink: 0;
         }
-
-        /* Цветовая палитра */
         :root {
-            --dark-green: #1E4232;    /* Глубокий кипарисовый зелёный */
-            --light-green: #3F6E4C;   /* Мягкий природный зелёный */
-            --dark-blue: #0C1B2C;     /* Тёмно-синий / почти чёрный */
-            --white: #FFFFFF;         /* Белый */
-            --gold: #B69B64;          /* Золотисто-бежевый */
-            --light-bg: #F8F9FA;      /* Светлый фон для секций */
+            --dark-green: #1E4232;    
+            --light-green: #3F6E4C;   
+            --dark-blue: #0C1B2C;     
+            --white: #FFFFFF;         
+            --gold: #B69B64;          
+            --light-bg: #F8F9FA;      
         }
-        
         /* Общие стили */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
         body {
             font-family: 'Open Sans', sans-serif;
             color: var(--dark-blue);
             line-height: 1.6;
             overflow-x: hidden;
         }
-        
         h1, h2, h3, h4, h5 {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
             color: var(--dark-green);
         }
-        
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
         }
-        
         .btn {
             display: inline-block;
             background: var(--light-green);
@@ -231,39 +202,32 @@
             text-align: center;
             font-size: 1rem;
         }
-        
         .btn:hover {
             background: var(--dark-green);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(30, 66, 50, 0.2);
         }
-        
         .btn-gold {
             background: var(--gold);
             color: var(--dark-blue);
         }
-        
         .btn-gold:hover {
             background: #a08654;
             color: var(--white);
         }
-        
         section {
             padding: 80px 0;
         }
-        
         .section-title {
             text-align: center;
             margin-bottom: 50px;
         }
-        
         .section-title h2 {
             font-size: 2.5rem;
             margin-bottom: 15px;
             position: relative;
             display: inline-block;
         }
-        
         .section-title h2:after {
             content: '';
             display: block;
@@ -272,14 +236,12 @@
             background: var(--gold);
             margin: 15px auto;
         }
-        
         .section-title p {
             max-width: 700px;
             margin: 0 auto;
             color: var(--dark-blue);
             font-size: 1.1rem;
         }
-
         /* Шапка */
         header {
             background: var(--dark-blue);
@@ -290,14 +252,12 @@
             z-index: 1000;
             transition: all 0.3s ease;
         }
-        
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
         }
-        
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
@@ -305,21 +265,17 @@
             text-decoration: none;
             font-family: 'Playfair Display', serif;
         }
-        
         .logo span {
             color: var(--gold);
         }
-        
         nav ul {
             display: flex;
             list-style: none;
         }
-        
         nav ul li {
             margin-left: 25px;
             position: relative;
         }
-        
         nav ul li a {
             text-decoration: none;
             color: var(--white);
@@ -329,7 +285,6 @@
             padding: 10px 0;
             display: block;
         }
-        
         nav ul li a:after {
             content: '';
             position: absolute;
@@ -340,15 +295,12 @@
             background: var(--gold);
             transition: width 0.3s;
         }
-        
         nav ul li a:hover {
             color: var(--gold);
         }
-        
         nav ul li a:hover:after {
             width: 100%;
         }
-        
         /* Выпадающее меню для Университетов */
         .dropdown-menu {
             position: absolute;
@@ -365,13 +317,11 @@
             z-index: 1001;
             padding: 20px 0;
         }
-        
         .dropdown:hover .dropdown-menu {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
-        
         .dropdown-menu:before {
             content: '';
             position: absolute;
@@ -382,7 +332,6 @@
             background: var(--white);
             transform: rotate(45deg);
         }
-        
         .country-items {
             display: flex;
             align-items: center;
@@ -392,13 +341,11 @@
             transition: all 0.3s ease;
             border-left: 3px solid transparent;
         }
-        
         .country-items:hover {
             background: var(--light-bg);
             border-left: 3px solid var(--light-green);
             padding-left: 30px;
         }
-        
         .country-flags {
             width: 30px;
             height: 20px;
@@ -408,19 +355,16 @@
             background-position: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        
         .country-name {
             font-weight: 500;
             color: var(--dark-blue);
         }
-        
         .mobile-menu {
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--white);
         }
-
         /* Герой секция Турция */
         .turkey-hero {
             background: linear-gradient(rgba(227, 10, 23, 0.8), rgba(12, 27, 44, 0.7)), url('https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
@@ -434,14 +378,12 @@
             display: flex;
             align-items: center;
         }
-        
         .turkey-hero h1 {
             font-size: 3rem;
             margin-bottom: 20px;
             color: var(--white);
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-        
         .turkey-hero p {
             font-size: 1.3rem;
             max-width: 800px;
@@ -449,12 +391,10 @@
             font-weight: 300;
             text-shadow: 0 1px 5px rgba(0,0,0,0.3);
         }
-        
         /* Университеты Турции */
         .universities {
             background: var(--white);
         }
-        
         .universities-tabs {
             display: flex;
             justify-content: center;
@@ -462,7 +402,6 @@
             flex-wrap: wrap;
             gap: 10px;
         }
-        
         .tab-btn {
             background: var(--white);
             border: 2px solid var(--light-green);
@@ -473,7 +412,7 @@
             transition: all 0.3s;
             font-weight: 500;
         }
-        
+
         .tab-btn.active, .tab-btn:hover {
             background: var(--light-green);
             color: var(--white);
@@ -849,50 +788,10 @@
     </style>
 </head>
 <body>
-    <!-- Шапка -->
-    <header>
-        <div class="container header-container">
-            <a href="index.html" class="logo">Kiparis<span>Global</span></a>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Главная</a></li>
-                    <li><a href="about.html">О нас</a></li>
-                    <li class="dropdown">
-                        <a href="./universities.html">Университеты</a>
-                        <div class="dropdown-menu">
-                            <a href="./south-korea.html" class="country-items">
-                                <div class="country-flags" style="background-color: #0047A0;"></div>
-                                <span class="country-name">Южная Корея</span>
-                            </a>
-                            <a href="./china.html" class="country-items">
-                                <div class="country-flags" style="background-color: #DE2910;"></div>
-                                <span class="country-name">Китай</span>
-                            </a>
-                            <a href="./italy.html" class="country-items">
-                                <div class="country-flags" style="background-color: #c69d0b;"></div>
-                                <span class="country-name">Италия</span>
-                            </a>
-                            <a href="./spain.html" class="country-items">
-                                <div class="country-flags" style="background-color: #C60B1E;"></div>
-                                <span class="country-name">Испания</span>
-                            </a>
-                            <a href="./czech.html" class="country-items">
-                                <div class="country-flags" style="background-color: #D7141A;"></div>
-                                <span class="country-name">Чехия</span>
-                            </a>
-                            <a href="./turkey.html" class="country-items">
-                                <div class="country-flags" style="background-color: #E30A17;"></div>
-                                <span class="country-name">Турция</span>
-                            </a>
-                        </div>
-                    </li>
-                   <li><a href="./index.html#application">Анкета</a></li>
-                    <li><a href="./index.html#contacts">Контакты</a></li>
-                </ul>
-            </nav>
-            <div class="mobile-menu">☰</div>
-        </div>
-    </header>
+  
+        <!-- Шапка -->
+  <div id="header"></div>
+<script src="/header.js"></script>
 
     <!-- Герой секция Турция -->
     <section class="turkey-hero">
